@@ -8,7 +8,7 @@ else if (pedirNumero >= 1001) {
   alert("Uff te pasaste, proba de nuevo 🤔🤔🤔");
 
 } 
-else if ((pedirNumero != Number)) {
+else { ((pedirNumero != Number)) 
   alert("Ingresaste una letra proba de nuevo 🙅‍♂️🙅‍♂️🙅‍♂️");
 
 }
