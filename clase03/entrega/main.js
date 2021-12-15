@@ -1,10 +1,17 @@
 //Pedir un texto mediante prompt, concatenar un valor en cada repeticion, realizando una salida por cada resultado, hasta que se ingresa ESC
 
-let pedirTexto = prompt("Ingresa una palabra ");
+let entrada = prompt("Ingresa una palabra...");
+let salida = "";
 
-while (pedirTexto != "ESC") {
+while (entrada != "ESC") {
     
-  alert("El usuario ingreso " + pedirTexto);
+  salida = salida + " " + entrada;
 
-  pedirTexto = (pedirTexto + " " + prompt("Ingresa otra palabra"));
+  alert("El usuario ingreso:" + salida);
+  
+  entrada = prompt("Ingresa una palabra...");  
 }
+
+
+
+

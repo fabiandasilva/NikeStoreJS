@@ -1,4 +1,4 @@
-//Operaciones matematicas
+/* //Operaciones matematicas
 alert("Comencemos con una suma");
 let numeroUno = Number(prompt("Ingrese el primer numero"));
 let numeroDos = Number(prompt("Ingrese el segundo numero"));
@@ -11,3 +11,15 @@ let apellido = prompt("y tu apellido ");
 let salida =
   "Tu nombre y apellido es " + "  " + nombre + " " + apellido + "  🌝 ";
 alert(salida);
+ */
+
+
+ let numero=36;
+ let divisor=3;
+
+ if ((numero/divisor)>12) {
+   alert("Puedo divirlo")
+   
+ }else{
+   alert("No Puedo")
+ }
