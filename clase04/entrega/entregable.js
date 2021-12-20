@@ -1,6 +1,6 @@
 //* Calcular el costo total de productos y/o servicios seleccionados por el usuario
 
-//!Aca selecciono el producto
+
 
 let valorCafe = 200;
 let valorFactura = 300;
