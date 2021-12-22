@@ -1,8 +1,8 @@
 //* Calcular el costo total de productos y/o servicios seleccionados por el usuario
 
-let valorCafe = 200;
-let valorFactura = 300;
-let valorGalletita = 400;
+let valorNike = 17000;
+let valorAdidas = 13000;
+let valorReebok = 14000;
 let total = 0;
 
 function AcumularTotal(valorProducto) {
@@ -10,25 +10,28 @@ function AcumularTotal(valorProducto) {
 }
 
 function choiseProduct() {
-  let select = prompt("Seleccione un producto:\n cafe \n factura \n galletita");
+  let select = prompt("Seleccione un producto:\n nike \n adidas \n reebok");
   let guardar = "";
 
   while (select != "finalizar") {
 
     switch (select) {
 
-      case "cafe":
-        AcumularTotal(valorCafe);
-        alert("☕ vale: " + valorCafe);
+      case "nike":
+        AcumularTotal(valorNike);
+        alert("👟 vale: " + valorNike);
         break;
-      case "factura":
-        AcumularTotal(valorFactura);
-        alert("🥐 vale: " + valorFactura);
+        
+      case "adidas":
+        AcumularTotal(valorAdidas);
+        alert("👞 vale: " + valorAdidas);
         break;
-      case "galletita":
-        AcumularTotal(valorGalletita);
-        alert("🍪 vale: " + valorGalletita);
+
+      case "reebok":
+        AcumularTotal(valorReebok);
+        alert("👟 vale: " + valorReebok);
         break;
+
       default:
         /* El usuario ingreso algo no valido */
         break;
@@ -40,7 +43,7 @@ function choiseProduct() {
     alert("Seleccionaste:\n " + guardar + "\nTotal: " + total);
 
     select = prompt(
-      "Selecciona otro producto o escribi finalizar para terminar la compra \n cafe \n factura \n galletita"
+      "Selecciona otro producto o escribi finalizar para terminar la compra \n nike \n adidas \n reebok"
     );
   }
 }
