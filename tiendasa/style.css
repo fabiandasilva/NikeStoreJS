@@ -1,3 +1,36 @@
+
+/*!Index*/
+body{
+    width: 100%;
+    margin: 5px 30px;    
+}
+.cards{
+    width: 100%;
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.imagenIndex{
+    width: 400px;
+    height: 370px;
+}
+.contenedorImagenIndex{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    border:1px solid rgb(230, 224, 224);
+    border-radius: 10%;
+    width:600px;
+    height:auto;
+    margin: 20px;
+}
+
+
+
+/*! Cards */
 .contenedorGeneral{
     width: 100%;
     height: 100vh;
@@ -60,7 +93,7 @@
 }
 .producto{
     font-size: 32px;
-    margin-bottom: 8px;
+    margin: 8px;
 }
 .precio{
     font-size: 18px;
@@ -118,3 +151,4 @@ input[type="radio"]:checked + label{
 .button:hover{
     background-color: #000;
 }
+
