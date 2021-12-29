@@ -1,3 +1,30 @@
+//!Simulo el registro de usuario para realizar la compra
+class newUser{
+  constructor(nombre, apellido, telefono, correo){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.telefono = telefono;
+    this.correo = correo;
+  }
+  //Metodo para mostrar datos por consola
+  mostrarDatos(){
+    console.log(`Los datos cargados fueron: \n${this.nombre}\n${this.apellido}\n${this.telefono}\n${this.correo}`)
+    alert("Registro exitoso!")
+  }
+}
+const nombre = prompt('Nombre: ')
+const apellido = prompt('Apellido: ')
+const telefono = prompt('Telefono: ')
+const correo = prompt('Correo: ')
+
+const user = new newUser(nombre, apellido, telefono, correo)
+
+console.log(user)
+
+user.mostrarDatos();
+
+
+
 //!Defino la estructura para cargar los productos
 
 class Productos {
@@ -53,7 +80,7 @@ for (let index = 0; index < cargarProductos.length; index++) {
   
 }
 //*Busco con filter precios menor a 32.000 
-console.log(cargarProductos.filter((product) => product.precio< 32.000));
+console.log(cargarProductos.filter((product) => product.precio< 35.000));
 
 
 //*Muestro todos los productos cargados en la consola
