@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <!-- fontanwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+
+</head>
+
+<body>
+    <!-- navBar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="index.html">
+                <img src="./img/logo.png" alt="logo" class="imgLogo" >
+
+            </a>
+
+            <div class="order-lg-2 nav-btns">
+                <button type="button" class="btn position-relative">
+                    <input type="search" id="search" placeholder="Buscar..." />
+                    <i class="fa fa-search">
+                    </i>
+                </button>
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                </button>
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                </button>
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+                <ul class="navbar-nav mx-auto text-center">
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#tienda">Tienda</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- slide -->
+    <span id="inicio"></span>
+    <header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style="padding-top: 104px;">
+        <div class="container h-100 d-flex align-items-center carousel-inner" >
+            <div class="text-center carousel-item active">
+                <h2 class="text-capitalize text-white" >NIKE AIR ZOOM
+                    PEGASUS 38</h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">Una nueva forma de correr</h1>
+                <a href="#" class="btn mt-3 text-uppercase">Comprar ahora</a>
+            </div>
+            <div class="text-center carousel-item">
+                <h2 class="text-capitalize text-white">Nike Air Zoom Pegasus 38</h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">VELOCIDAD CONFIABLE TODOS LOS DÍAS</h1>
+                <a href="#" class="btn mt-3 text-uppercase">Comprar ahora</a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </header>
+    <!-- Filtro -->
+    <section id="collection" class="py-5">
+        <div class="container" id="tienda">
+            <div class="row g-0">
+                <div class="d-flex flex-wrap justify-content-center mt-5 filter-button-group">
+                    <button type="button" class="btn m-2 text-dark active-filter-btn" data-filter="*">Todos</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".feat">Destacados</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".feat">Training</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".best">Running</button>
+                    <button type="button" class="btn m-2 text-dark" data-filter=".new">Urban</button>
+                </div>
+            </div>
+    </section>
+    <!-- Destacados -->
+    <div class="container" >
+        <div class="collection-list mt-4 row gx-0 gy-3">
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                <div class="collection-img position-relative">
+                    <a href="#"><img src="./img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg"
+                            class="w-100"></a>
+                    <span
+                        class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center title">Destacado</span>
+                </div>
+                <div class="text-center">
+                    <div class="rating mt-3">
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                    </div>
+                    <p class="text-capitalize my-1">Nike Air Zoom Pegasus 38</p>
+                    <span class="fw-bold">$ 17.728</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                <div class="collection-img position-relative">
+                    <a href="./card.html"><img src="./img/running/Epic_React__Flyknit_2/imagen1.jpg" class="w-100"></a>
+                    <span
+                        class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center title">Destacado</span>
+                </div>
+                <div class="text-center">
+                    <div class="rating mt-3">
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                    </div>
+                    <p class="text-capitalize my-1">Nike Epic React Flyknit 2</p>
+                    <span class="fw-bold">$ 17.728</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                <div class="collection-img position-relative">
+                    <img src="./img/running/Nike_Joyride_Dual_Run/imagen1.jpg" class="w-100">
+                    <span
+                        class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center title">Destacado</span>
+                </div>
+                <div class="text-center">
+                    <div class="rating mt-3">
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                    </div>
+                    <p class="text-capitalize my-1">Nike Joyride Dual Run</p>
+                    <span class="fw-bold">$ 17.728</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                <div class="collection-img position-relative">
+                    <img src="./img/training/Nike_legend_Essentia_2/imagen1.jpg" class="w-100">
+                    <span
+                        class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center title">Destacado</span>
+                </div>
+                <div class="text-center">
+                    <div class="rating mt-3">
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                        <span class="text-primary"><i class="fas fa-star"></i></span>
+                    </div>
+                    <p class="text-capitalize my-1">Nike Legend Essential 2</p>
+                    <span class="fw-bold">$ 17.728</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tienda -->
+    <div class="container">
+        <div class="collection-list mt-4 row gx-0 gy-3">
+
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/running/Epic_React__Flyknit_2/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Epic Reac Flyknit 2</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_air_Max_Bella_trainning_4/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Air Max Bella trainning 4</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/urban/Jordan_air_max_200/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Air max 200</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Air Zoom Pegasus 38</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_city_trainer/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike City trainer</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/urban/Nike_Air_Max_90/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Air max 90</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/running/Nike_Joyride_Dual_Run/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Joyride Dual Run</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_In-Season-Tr_9/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike In Season Tr 9</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/urban/Nike_Court_Legacy/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Court Legacy</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/running/Nike_Renew_Run_2/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Renew Run 2</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_legend_Essentia_2/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Legend Essential 2</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/urban/Nike_Crater_impact/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Crater impact</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/running/Nike_Revolution_5/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Revolution 5</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_Superrep_Go/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Superrep Go</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/training/Nike_In-Season-Tr_9/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                <div class="special-img position-relative overflow-hidden">
+                    <a href="#"> <img src="img/urban/Nike_Wearallday/imagen1.jpg" class="w-100"></a>
+                </div>
+                <div class="text-center">
+                    <p class="text-capitalize mt-3 mb-1">Nike Wearallday</p>
+                    <span class="fw-bold d-block">$ 45.50</span>
+                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- newsletter -->
+    <section id="newsletter" class="py-5">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="title text-center pt-3 pb-5">
+                    <h2 class="position-relative d-inline-block ms-4">Newsletter Suscripción</h2>
+                </div>
+
+                <p class="text-center text-muted">Suscribete para tener descuentos unicos y mantenerte informado de
+                    nuestros nuevos productos</p>
+                <div class="input-group mb-3 mt-3">
+                    <input type="text" class="form-control" placeholder="Escribi tu correo...">
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of newsletter -->
+
+    <!-- footer -->
+    <footer class="bg-dark py-5" id="contacto">
+        <div class="container">
+            <div class="row text-white g-4">
+                <div class="col-md-6 col-lg-3">
+                    <a class="text-uppercase text-decoration-none brand text-white" href="index.html">Nike</a>
+                    <p class="text-white text-muted mt-3">  Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it Just do it</p>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-light">Navegar</h5>
+                    <ul class="list-unstyled">
+                        <li class="my-3">
+                            <a href="#" class="text-white text-decoration-none text-muted">
+                                <i class="fas fa-chevron-right me-1"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="text-white text-decoration-none text-muted">
+                                <i class="fas fa-chevron-right me-1"></i> Tienda
+                            </a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="text-white text-decoration-none text-muted">
+                                <i class="fas fa-chevron-right me-1"></i> Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-light mb-3">Contacto</h5>
+                    <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class="me-3">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </span>
+                        <span class="fw-light">
+                            Avenida siempre viva 123
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class="me-3">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="fw-light">
+                            correofalsonike@hotmail.com
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class="me-3">
+                            <i class="fas fa-phone-alt"></i>
+                        </span>
+                        <span class="fw-light">
+                            01 223334444
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fw-light mb-3">Nuestras Redes</h5>
+                    <div>
+                        <ul class="list-unstyled d-flex">
+                            <li>
+                                <a href="#" class="text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+
+    <!-- bootstrap js -->
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <!-- Ejecicio05 -->
+    <script src="./js/ordenarArchivo.js"></script>
+</body>
+
+</html>
