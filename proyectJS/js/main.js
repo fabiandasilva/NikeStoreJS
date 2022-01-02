@@ -125,20 +125,20 @@ class NewUser {
         } *
         //*Defino propiedad para mostrar los datos por consola
         mostrarDatos() {
-            console.log(`Los datos cargados fueron: \n${this.nombre}\n${this.apellido}\n${this.telefono}\n${this.correo}`)
+            console.log(`Los datos cargados fueron: \n${this.nombre}\n${this.apellido}\n${this.telefono}\n${this.correo}`);
 
         }
 }
 
 
-const nombre = prompt('Nombre: ')
-const apellido = prompt('Apellido: ')
-const telefono = prompt('Telefono: ')
-const correo = prompt('Correo: ')
-const user = new NewUser(nombre, apellido, telefono, correo)
+const nombre = prompt('Nombre: ');
+const apellido = prompt('Apellido: ');
+const telefono = prompt('Telefono: ');
+const correo = prompt('Correo: ');
+const user = new NewUser(nombre, apellido, telefono, correo);
 
-console.log(user)
+console.log(user);
 
 user.mostrarDatos();
 
-alert("Registro exitoso!")
+alert("Registro exitoso!");
