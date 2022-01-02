@@ -64,16 +64,16 @@ console.log(team);
 
 //!Ejemplo de impimir informacion del array
 
-/* const movies = [
-  { id: 1, name: "spiderman", year: 2018 },
-  { id: 2, name: "Avengers", year: 2018 },
-  { id: 3, name: "IronMan", year: 2018 },
-  { id: 4, name: "Captain America", year: 2018 },
+const movies = [
+    { id: 1, name: "spiderman", year: 2018 },
+    { id: 2, name: "Avengers", year: 2018 },
+    { id: 3, name: "IronMan", year: 2018 },
+    { id: 4, name: "Captain America", year: 2018 },
 ];
 
-for (const movie of movies){
-  alert(movie.id+' - '+ movie.name + ' - ' + movie.year)
-} */
+for (const movie of movies) {
+    alert(movie.id + ' - ' + movie.name + ' - ' + movie.year)
+}
 
 //!Ejemplo de como Sumas el iva dinamicamente usando un objeto y array
 /* class Producto {

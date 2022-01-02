@@ -1,32 +1,4 @@
-//*Simulo que el usuario finaliza la compra
-alert("Registrate antes de finalizar la compra");
-
-//*Capturo los datos
-class NewUser {
-    constructor(nombre, apellido, telefono, correo) {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.telefono = telefono;
-            this.correo = correo;
-        } *
-        //*Defino propiedad para mostrar los datos
-        mostrarDatos() {
-            console.log(`Los datos cargados fueron: \n${this.nombre}\n${this.apellido}\n${this.telefono}\n${this.correo}`)
-            alert("Registro exitoso!")
-        }
-}
-
-const nombre = prompt('Nombre: ')
-const apellido = prompt('Apellido: ')
-const telefono = prompt('Telefono: ')
-const correo = prompt('Correo: ')
-const user = new NewUser(nombre, apellido, telefono, correo)
-
-console.log(user)
-
-user.mostrarDatos();
-
-//*Defino el modelo para luego cargar los datos /*  */
+//*Defino el modelo para luego cargar los datos 
 class Producto {
     constructor(categoria, modelo, talle, precio) {
             this.categoria = categoria;
@@ -73,17 +45,100 @@ arrayProductos.push(new Producto("Urbano", "Nike Crater impact", 42, 35000));
 
 arrayProductos.push(new Producto("Urbano", "Nike Wearallday", 42, Math.round(32000)));
 
+
+
 //*Utilizo un for para recorrer el arreglo e ir sumando el iva
 for (let index = 0; index < arrayProductos.length; index++) {
     arrayProductos[index].sumarIva();
 }
 
-let indexProductoSeleccionado = 2;
 
-let cost = 0;
+//*Defino varibles para luego utilizar el precio de los productos 
+let indexProductoSeleccionado1 = 1;
+let indexProductoSeleccionado2 = 2;
+let indexProductoSeleccionado3 = 3;
 
-let cantidad = parseInt(prompt("Su producto elegido fue:" + "\n" + "Categoria: " + arrayProductos[indexProductoSeleccionado].categoria + "\n" + "Modelo: " + arrayProductos[indexProductoSeleccionado].modelo + "\n" + "Talle: " + arrayProductos[indexProductoSeleccionado].talle + "\nPrecio: $" + arrayProductos[indexProductoSeleccionado].precio + "\nIngrese cantidad que desea comprar"));
+let ProductoUno = arrayProductos[indexProductoSeleccionado1].precio;
+let ProductoDos = arrayProductos[indexProductoSeleccionado2].precio;
+let ProductoTres = arrayProductos[indexProductoSeleccionado3].precio;
+let total = 0;
 
-cost = cost + (cantidad * arrayProductos[indexProductoSeleccionado].precio);
 
-alert("El costo total fue de: $" + Math.round(cost));
+//*Utilizo una funcion para poder guardar el valor e ir acumulando
+function AcumularTotal(valorProducto) {
+    total = total + valorProducto;
+}
+
+
+//*Defino una funcion para elegir el producto 
+function choiseProduct() {
+    let select = prompt("Seleccione un producto sorpresa 🎁🎁🎁:\n 01 \n 02 \n 03");
+    let guardar = "";
+
+    while (select != "COMPRAR") {
+
+        switch (select) {
+
+            case "01":
+                AcumularTotal(ProductoUno);
+                alert("Su producto elegido fue:" + "\n" + "Categoria: " + arrayProductos[indexProductoSeleccionado1].categoria + "\n" + "Modelo: " + arrayProductos[indexProductoSeleccionado1].modelo + "\n" + "Talle: " + arrayProductos[indexProductoSeleccionado1].talle + "\nPrecio: $" + ProductoUno);
+
+                break;
+
+            case "02":
+                AcumularTotal(ProductoDos);
+                alert("Su producto elegido fue:" + "\n" + "Categoria: " + arrayProductos[indexProductoSeleccionado2].categoria + "\n" + "Modelo: " + arrayProductos[indexProductoSeleccionado2].modelo + "\n" + "Talle: " + arrayProductos[indexProductoSeleccionado2].talle + "\nPrecio: $" + ProductoDos);
+                break;
+
+            case "03":
+                AcumularTotal(ProductoTres);
+                alert("Su producto elegido fue:" + "\n" + "Categoria: " + arrayProductos[indexProductoSeleccionado3].categoria + "\n" + "Modelo: " + arrayProductos[indexProductoSeleccionado3].modelo + "\n" + "Talle: " + arrayProductos[indexProductoSeleccionado3].talle + "\nPrecio: $" + ProductoTres);
+                break;
+
+            default:
+                alert("Por favor selecciona uno de los productos")
+                break;
+        }
+        guardar = guardar + "\n" + select;
+
+        alert("Seleccionaste 🥳🥳🥳:\n " + guardar + "\nTotal: " + Math.round(total));
+
+        select = prompt(
+            "Selecciona otro producto o escribi COMPRAR para finalizar \n 01 \n 02 \n 03"
+        );
+    }
+}
+choiseProduct();
+
+
+//*Simulo que el usuario finaliza la compra
+alert("Registrate antes de finalizar la compra");
+
+
+//*Capturo los datos de registro
+class NewUser {
+    constructor(nombre, apellido, telefono, correo) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.telefono = telefono;
+            this.correo = correo;
+        } *
+        //*Defino propiedad para mostrar los datos por consola
+        mostrarDatos() {
+            console.log(`Los datos cargados fueron: \n${this.nombre}\n${this.apellido}\n${this.telefono}\n${this.correo}`)
+
+        }
+}
+
+
+const nombre = prompt('Nombre: ')
+const apellido = prompt('Apellido: ')
+const telefono = prompt('Telefono: ')
+const correo = prompt('Correo: ')
+const user = new NewUser(nombre, apellido, telefono, correo)
+
+console.log(user)
+
+user.mostrarDatos();
+
+alert("Registro exitoso!")
