@@ -22,11 +22,11 @@ class Carrito {
     }
 }
 //! Creo funciones para interactuar con el localStorage
-guardarStorage = (clave, valor) => {
+const GuardarStorage = (clave, valor) => {
     localStorage.setItem(clave, JSON.stringify(valor));
 };
 
-obtenerStorage = (clave) => {
+const ObtenerStorage = (clave) => {
     const valor = JSON.parse(localStorage.getItem(clave));
     return valor;
 };
@@ -35,14 +35,14 @@ const productos = [];
 let carrito = [];
 let carritoDescripcion = "";
 
-if (obtenerStorage('carrito')) {
-    carrito = obtenerStorage('carrito');
+if (ObtenerStorage('carrito')) {
+    carrito = ObtenerStorage('carrito');
     carrito.forEach(producto => carritoDescripcion += `${ producto.modelo} - ${producto.cantidad} \n`);
     alert(carritoDescripcion)
 } else {
     alert('El carrito esta vacio');
 }
- 
+
 const producto1 = new Producto(1, "../img/running/Epic_React__Flyknit_2/imagen1.jpg", "Correr", "Nike Air Zoom Pegasus 38", 18000);
 const producto2 = new Producto(2, "../img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg", "Correr", "Nike Epic React Flyknit 2", 18000);
 const producto3 = new Producto(3, "../img/running/Nike_Joyride_Dual_Run/imagen1.jpg", "Correr", "Nike Renew Run 2", 14728);
@@ -103,7 +103,7 @@ do {
                 //*Si el producto existe me agrega al carrito
                 const productoElegido = carrito.find(producto => producto.id === parseInt(idProductoElegido));
                 productoElegido.cantidad++;
-                guardarStorage('carrito', carrito);
+                GuardarStorage('carrito', carrito);
             } else {
                 const productoElegido = productos.find(producto => producto.id === parseInt(idProductoElegido));
                 const producto = new Carrito(productoElegido.id, productoElegido.categoria, productoElegido.modelo, productoElegido.precio, 1);
@@ -114,23 +114,25 @@ do {
         }
     }
 } while (idProductoElegido !== '.');
- 
+
 console.log(carrito);
+
 
 //! Realizo la suma del producto y la cantidad elegida
 carrito.forEach(producto => precioTotal += producto.precio * producto.cantidad);
 
 console.log(`Precio total: ${precioTotal}`);
 
-//!Genero las cards
-const products = document.getElementById("contenedorProductos");
-console.log(products)
 
-function renderProducts(productos, etiqueta) {
-    etiqueta.innerHTML = "";
+//!Genero las cards manipulando el DOM
+const products = document.getElementById("contenedorProductos");
+console.log(products);
+
+const GenerateCards = (productos, clear) => {
+    clear.innerHTML = "";
 
     for (producto of productos) {
-        etiqueta.innerHTML += `
+        clear.innerHTML += `
         <div class="col-md-6 col-lg-4 col-xl-3 p-2" id="contenedorProductos">
                 <div class="special-img position-relative overflow-hidden">
                     <a href="#"> <img src="${producto.imagen}" class="w-100"></a>
@@ -140,9 +142,8 @@ function renderProducts(productos, etiqueta) {
                     <span class="fw-bold d-block">$ ${producto.precio}</span>
                     <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
                 </div>
-            </div>
+        </div>
         `
     }
-
 }
-renderProducts(productos, products);
+GenerateCards(productos, products);
