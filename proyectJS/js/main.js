@@ -1,47 +1,12 @@
-class Producto {
-    constructor(id, imagen, categoria, modelo, precio) {
-        this.id = id;
-        this.imagen = imagen;
-        this.categoria = categoria;
-        this.modelo = modelo;
-        this.precio = precio;
-    }
-    mostrarDatos() {
-        alert(`Usted eligio el producto: ${this.modelo} que cuesta $${this.precio}`);
-    }
-}
+//!Llamo los elementos que voy a utilizar
+const contenedorProductos = document.getElementById('card-group');
+const contenedorCarrito = document.getElementById('contenedor-carrito');
+const contenedorProductosCarrito = document.getElementById('contenedor-productos-carrito');
 
-class Carrito {
-    constructor(id, imagen, categoria, modelo, precio, cantidad) {
-        this.id = id;
-        this.imagen = imagen;
-        this.categoria = categoria;
-        this.modelo = modelo;
-        this.precio = precio;
-        this.cantidad = cantidad;
-    }
-}
-//! Creo funciones para interactuar con el localStorage
-const GuardarStorage = (clave, valor) => {
-    localStorage.setItem(clave, JSON.stringify(valor));
-};
 
-const ObtenerStorage = (clave) => {
-    const valor = JSON.parse(localStorage.getItem(clave));
-    return valor;
-};
-
+//!Creo arrays para ir cargandolo
 const productos = [];
 let carrito = [];
-let carritoDescripcion = "";
-
-if (ObtenerStorage('carrito')) {
-    carrito = ObtenerStorage('carrito');
-    carrito.forEach(producto => carritoDescripcion += `${ producto.modelo} - ${producto.cantidad} \n`);
-    alert(carritoDescripcion)
-} else {
-    alert('El carrito esta vacio');
-}
 
 const producto1 = new Producto(1, "../img/running/Epic_React__Flyknit_2/imagen1.jpg", "Correr", "Nike Air Zoom Pegasus 38", 18000);
 const producto2 = new Producto(2, "../img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg", "Correr", "Nike Epic React Flyknit 2", 18000);
@@ -61,89 +26,89 @@ const producto13 = new Producto(13, "../img/urban/Nike_Court_Legacy/imagen1.jpg"
 const producto14 = new Producto(14, "../img/urban/Nike_Crater_impact/imagen1.jpg", "Urbano", "Nike Crater impact", 35000);
 const producto15 = new Producto(15, "../img/urban/Nike_Wearallday/imagen1.jpg", "Urbano", "Nike Wearallday", 42000);
 
-
 productos.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15);
 
-console.log(productos);
+
+//!Utilizo la funcion para ver lo que hay en el Storage
+if (ObtenerStorage('carrito')) {
+    carrito = ObtenerStorage('carrito');
+    renderizarCarrito(contenedorProductosCarrito, carrito);
+} else {
+    alert('No hay nada en el carrito');
+}
 
 
-//!Pido la eleccion de un producto para luego hacer match con su ID
-let idProductoElegido;
-
-let precioTotal = 0;
+//!Renderizo los Productos
+renderizarProductos(contenedorProductos, productos);
 
 
-do {
-    idProductoElegido = prompt(`Elija un munero de producto que desea comprar:
-    1 - Nike Air Zoom Pegasus 38
-    2 - Nike Epic React Flyknit 2
-    3 - Nike Renew Run 2
-    4 - Nike Joyride Dual Run
-    5 - Nike Revolution 5
-    6 - Nike Air Max Bella Training 4
-    7 - Nike City Trainer
-    8 - Nike In-Season Tr-9
-    9 - Nike legend Essential 2
-    10 - Nike Superrep Go
-    11 - Nike Jordan air max 200
-    12 - Nike Jordan air max 90
-    13 - Nike Court Legacy
-    14 - Nike Crater impact
-    15 - Nike Wearallday`);
-    console.log(idProductoElegido);
+//!Creo una funcion para ir agregando al carrito
+function agregarAlCarrito(event) {
+    console.log(event.target.id);
+    const idProductoElegido = (event.target.id);
 
-
-    //!Matcheo el id ingresado con el producto correspondiente a ese id
-
-    //*Con el primer if saco el alert del else (Ingrese un producto valido)
-    if (idProductoElegido !== '.') {
-
-        if (productos.some(producto => producto.id === parseInt(idProductoElegido))) {
-            if (carrito.some(producto => producto.id === parseInt(idProductoElegido))) {
-                //*Si el producto existe me agrega al carrito
-                const productoElegido = carrito.find(producto => producto.id === parseInt(idProductoElegido));
-                productoElegido.cantidad++;
-                GuardarStorage('carrito', carrito);
-            } else {
-                const productoElegido = productos.find(producto => producto.id === parseInt(idProductoElegido));
-                const producto = new Carrito(productoElegido.id, productoElegido.categoria, productoElegido.modelo, productoElegido.precio, 1);
-                carrito.push(producto);
-            }
+    //!Matcheo con el id
+    if (productos.some(producto => producto.id === parseInt(idProductoElegido))) {
+        if (carrito.some(producto => producto.id === parseInt(idProductoElegido))) {
+            const productoElegido = carrito.find(producto => producto.id === parseInt(idProductoElegido));
+            productoElegido.cantidad++;
+            GuardarStorage('carrito', carrito);
         } else {
-            alert('Ingrese un numero de producto valido');
+            const productoElegido = productos.find(producto => producto.id === parseInt(idProductoElegido));
+            const producto = new Carrito(productoElegido.id, productoElegido.modelo, productoElegido.precio, 1);
+            carrito.push(producto);
+            GuardarStorage('carrito', carrito);
         }
-    }
-} while (idProductoElegido !== '.');
-
-console.log(carrito);
-
-
-//! Realizo la suma del producto y la cantidad elegida
-carrito.forEach(producto => precioTotal += producto.precio * producto.cantidad);
-
-console.log(`Precio total: ${precioTotal}`);
-
-
-//!Genero las cards manipulando el DOM
-const products = document.getElementById("contenedorProductos");
-console.log(products);
-
-const GenerateCards = (productos, clear) => {
-    clear.innerHTML = "";
-
-    for (producto of productos) {
-        clear.innerHTML += `
-        <div class="col-md-6 col-lg-4 col-xl-3 p-2" id="contenedorProductos">
-                <div class="special-img position-relative overflow-hidden">
-                    <a href="#"> <img src="${producto.imagen}" class="w-100"></a>
-                </div>
-                <div class="text-center">
-                    <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>
-                    <span class="fw-bold d-block">$ ${producto.precio}</span>
-                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
-                </div>
-        </div>
-        `
+    } else {
+        alert('Ingrese un número de producto válido');
     }
 }
-GenerateCards(productos, products);
+
+
+//!Renderizo los productos seleccionados al carrito
+function renderizarCarrito(contenedor, array) {
+    let precioTotal = 0;
+    array.forEach(producto => {
+        contenedor.innerHTML += `  <div class="row shoppingCartItem" id="contenedor-productos-carrito">
+        <div class="col-6">
+            <div
+                class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <img class="shopping-cart-image">
+                <h6
+                    class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">
+                   ${producto.modelo}
+                </h6>
+            </div>
+        </div>
+        <div class="col-2">
+            <div
+                class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <p class="item-price mb-0 shoppingCartItemPrice">${producto.precio}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div
+                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                <p class="ml-4 mb-0 shoppingCartCount">${producto.cantidad}</p>
+                <button class="btn btn-danger" id="buttonDelete" type="button">X</button>
+            </div>
+        </div>
+    </div>`;
+    });
+
+
+    //!Realizo la suma y cantidad para determinar el precio
+    array.forEach(producto => precioTotal += producto.precio * producto.cantidad);
+    contenedor.innerHTML += `<div class="row">
+    <div class="col-12">
+        <div class="shopping-cart-total d-flex align-items-center">
+            <p class="mb-0">Total: ${precioTotal} </p>
+            <div class="toast ml-auto bg-info" role="alert" aria-live="assertive"
+                aria-atomic="true" data-delay="2000">
+            </div>
+            <button class="btn btn-success ml-auto comprarButton" type="button"
+                data-toggle="modal" data-target="#comprarModal">Finalizar compra</button>
+        </div>
+    </div>
+</div>`
+}

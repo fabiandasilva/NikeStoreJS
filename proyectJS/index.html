@@ -19,25 +19,27 @@
 </head>
 
 <body>
+
+
     <!-- navBar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="index.html">
                 <img src="./img/logo.png" alt="logo" class="imgLogo">
-
             </a>
+            <div class="order-lg-2 nav-btns">
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-user"></i>
+                </button>
+                <button type="button" class="btn position-relative">
+                    <a href="#miModal"></a><i class="fa fa-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
+                </button>
 
-            <div class="order-lg-2 nav-btns">                
-                <button type="button" class="btn position-relative">
-                    <i class="fa fa-user"></i>                    
-                </button>
-                <button type="button" class="btn position-relative">
-                    <i class="fa fa-heart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
-                </button>
-                <button type="button" class="btn position-relative">
+                <button type="button" class="btn position-relative type=" button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
                 </button>
             </div>
 
@@ -60,6 +62,8 @@
             </div>
         </div>
     </nav>
+
+
     <!-- slide -->
     <span id="inicio"></span>
     <header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style="padding-top: 104px;">
@@ -81,8 +85,9 @@
         <button class="carousel-control-next" type="button" data-bs-target="#header" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
-
     </header>
+
+
     <!-- Filtro -->
     <section id="collection" class="py-5">
         <div class="container" id="tienda">
@@ -95,20 +100,48 @@
                 </div>
             </div>
     </section>
-    <!-- Tienda -->
+
+
+    <!-- Carrito Oculto -->
     <div class="container">
-        <div class="collection-list mt-4 row gx-0 gy-3" id="contenedorProductos">
-            <div class="col-md-6 col-lg-4 col-xl-3 p-2" >
-                <div class="special-img position-relative overflow-hidden">
-                    <a href="#"> <img src="..." class="w-100"></a>
-                </div>
-                <div class="text-center">
-                    <p class="text-capitalize mt-3 mb-1">...</p>
-                    <span class="fw-bold d-block">$ ...</span>
-                    <a href="#" class="btn btn-primary mt-3">Agregar al carrito</a>
+        <div style="min-height: 50%;">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card card-body" style="width: 100%;">
+                    <section class="shopping-cart">
+                        <!-- Guardos los productos del carrito -->
+                        <div class="container" id="contenedor-productos-carrito">
+
+                        </div>
+                        <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="comprarModalLabel">Gracias por su compra</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Pronto recibirá su pedido</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
+        </div>
 
+        <!-- Productos de tienda -->
+        <div class="collection-list mt-4 row gx-0 gy-3" id="card-group">
+
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3 p-2" style="width: 18rem;" id="contenedor-carrito">
 
         </div>
     </div>
@@ -131,7 +164,7 @@
             </div>
         </div>
     </section>
-    <!-- end of newsletter -->
+
 
     <!-- footer -->
     <footer class="bg-dark py-5" id="contacto">
@@ -228,6 +261,8 @@
     <!-- bootstrap js -->
     <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
+    <!-- Js tools -->
+    <script src="./js/tools.js"></script>
     <!-- Js principal -->
     <script src="./js/main.js"></script>
 </body>
