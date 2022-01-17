@@ -60,7 +60,7 @@ function agregarAlCarrito(event) {
             GuardarStorage('carrito', carrito);
         }
     } else {
-        alert('Ingrese un número de producto válido');
+        alert('Elija un producto valido');
     }
 }
 
@@ -107,8 +107,20 @@ function renderizarCarrito(contenedor, array) {
                 aria-atomic="true" data-delay="2000">
             </div>
             <button class="btn btn-success ml-auto comprarButton" type="button"
-                data-toggle="modal" data-target="#comprarModal">Finalizar compra</button>
+                data-toggle="modal" data-target="#comprarModal"id="finalizarCompra">Finalizar compra</button>
         </div>
     </div>
 </div>`
+}
+
+
+let finalizarCompra = document.getElementById('finalizarCompra');
+finalizarCompra.addEventListener('click', respuestaClick);
+
+function respuestaClick(events) {Swal.fire({
+    icon: 'success',
+    title: 'Gracias por su compra',
+    text: 'Pronto recibira su pedido',
+    timer: 2000
+  })
 }
