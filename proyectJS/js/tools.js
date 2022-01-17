@@ -66,6 +66,6 @@ function renderizarProductos(contenedor, productos) {
 
         contenedor.appendChild(cardDiv);
 
-        boton.addEventListener('click', agregarAlCarrito, renderizarCarrito);
+        boton.addEventListener('click', agregarAlCarrito);
     });
 }
