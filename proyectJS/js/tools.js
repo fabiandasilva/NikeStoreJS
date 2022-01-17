@@ -65,7 +65,12 @@ function renderizarProductos(contenedor, productos) {
         cardBodyDiv.appendChild(boton);
 
         contenedor.appendChild(cardDiv);
-
         boton.addEventListener('click', agregarAlCarrito);
+
+        const favorito = document.createElement('button');
+        favorito.setAttribute('class', 'btn btn-primary mt-3')
+        favorito.setAttribute('id', producto.id);
+        favorito.innerHTML = `<i class="fa fa-heart"></i>`;
+        cardBodyDiv.appendChild(favorito);
     });
 }

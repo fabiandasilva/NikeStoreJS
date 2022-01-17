@@ -8,6 +8,7 @@ const contenedorProductosCarrito = document.getElementById('contenedor-productos
 const productos = [];
 let carrito = [];
 
+
 const producto1 = new Producto(1, "./img/running/Epic_React__Flyknit_2/imagen1.jpg", "Correr", "Nike Air Zoom Pegasus 38", 18000);
 const producto2 = new Producto(2, "./img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg", "Correr", "Nike Epic React Flyknit 2", 18000);
 const producto3 = new Producto(3, "./img/running/Nike_Joyride_Dual_Run/imagen1.jpg", "Correr", "Nike Renew Run 2", 14728);
@@ -34,7 +35,7 @@ if (ObtenerStorage('carrito')) {
     carrito = ObtenerStorage('carrito');
     renderizarCarrito(contenedorProductosCarrito, carrito);
 } else {
-    alert('No hay nada en el carrito');
+    console.log('No hay nada en el carrito');
 }
 
 
@@ -81,7 +82,8 @@ function renderizarCarrito(contenedor, array) {
     //!Limpio todo 
     contenedor.innerHTML = "";
     array.forEach(producto => {
-        contenedor.innerHTML += `<div class="row shoppingCartItem" id="contenedor-productos-carrito">
+        contenedor.innerHTML += `                 
+            <div class="row shoppingCartItem" id="contenedor-productos-carrito">
         <div class="col-6">
             <div
                 class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
@@ -105,7 +107,8 @@ function renderizarCarrito(contenedor, array) {
                 <button class="btn btn-danger" id="buttonDelete" type="button">X</button>
             </div>
         </div>
-    </div>`;
+    </div>
+    `;
     });
 
 
@@ -114,7 +117,7 @@ function renderizarCarrito(contenedor, array) {
     contenedor.innerHTML += `<div class="row">
     <div class="col-12">
         <div class="shopping-cart-total d-flex align-items-center">
-            <p class="mb-0">Total: ${precioTotal} </p>
+            <p class="mb-0">Total:  $${precioTotal} </p>
             <div class="toast ml-auto bg-info" role="alert" aria-live="assertive"
                 aria-atomic="true" data-delay="2000">
             </div>

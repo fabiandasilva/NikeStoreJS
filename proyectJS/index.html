@@ -28,7 +28,13 @@
                 <img src="./img/logo.png" alt="logo" class="imgLogo">
             </a>
             <div class="order-lg-2 nav-btns">
-                <button type="button" class="btn position-relative type=" button" data-bs-toggle="collapse"
+                <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#favorito" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <i class="fa fa-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
+                </button>
+
+                <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                     <i class="fa fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
@@ -94,12 +100,52 @@
     </section>
 
 
-    <!-- Carrito Oculto -->
     <div class="container">
+        <!-- Favoritos Oculto -->
+        <div style="min-height: 50%;">
+            <div class="collapse collapse-horizontal" id="favorito">
+                <h1 class="text-center">Favoritos</h1>
+                <hr>
+                <div class="row">
+                    <p>Aca ira los productos Favoritos</p>
+                </div>
+            </div>
+        </div>
+        <!-- Carrito Oculto -->
         <div style="min-height: 50%;">
             <div class="collapse collapse-horizontal" id="collapseWidthExample">
                 <div class="card card-body" style="width: 100%;">
                     <section class="shopping-cart">
+                        <div class="container">
+                            <h1 class="text-center">Carrito</h1>
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="shopping-cart-header">
+                                        <h6>Productos</h6>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="shopping-cart-header">
+                                        <h6 class="text-truncate">Precio</h6>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="shopping-cart-header">
+                                        <h6>Cantidad</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shopping-cart-items shoppingCartItemsContainer">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="shopping-cart-total d-flex align-items-center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Guardos los productos del carrito -->
                         <div class="container" id="contenedor-productos-carrito">
 
@@ -238,9 +284,9 @@
 
     <!-- Js principal -->
     <script src="./js/main.js"></script>
-    
-<!-- SweetAler2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- SweetAler2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
