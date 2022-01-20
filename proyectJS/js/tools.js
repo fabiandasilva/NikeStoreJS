@@ -7,9 +7,6 @@ class Producto {
         this.modelo = modelo;
         this.precio = precio;
     }
-    mostrarDatos() {
-        alert(`Usted eligio el producto: ${this.modelo} que cuesta $${this.precio}`);
-    }
 }
 
 //!Constructor  del Carrito
@@ -74,3 +71,33 @@ function renderizarProductos(contenedor, productos) {
         cardBodyDiv.appendChild(favorito);
     });
 }
+function GuardarDatos() {
+    function NewUsers(nombre, correo) {
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+    usuarios = new NewUsers(nombreCapturado, correoCapturado);
+    cargarDatos();
+    mostrarDatos();
+
+}
+
+let ArrayDatos = [];
+
+function cargarDatos() {
+    ArrayDatos.push(usuarios);
+    console.log(ArrayDatos);
+}
+
+function mostrarDatos() {
+    const dataName = document.getElementById("dataName")
+    let span = document.createElement('span');
+    dataName.appendChild(span);
+
+    
+    span.innerHTML =  document.getElementById("nombre").value;
+    span.setAttribute('class', 'myclass');
+}
+
+
+document.getElementById("boton").addEventListener("click", GuardarDatos);

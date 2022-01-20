@@ -2,6 +2,8 @@
 const contenedorProductos = document.getElementById('card-group');
 const contenedorCarrito = document.getElementById('contenedor-carrito');
 const contenedorProductosCarrito = document.getElementById('contenedor-productos-carrito');
+let nombreCapturado = document.getElementById("nombre").value;
+let correoCapturado = document.getElementById("correo").value;
 
 
 //!Creo arrays para ir cargandolo
@@ -34,9 +36,7 @@ productos.push(producto1, producto2, producto3, producto4, producto5, producto6,
 if (ObtenerStorage('carrito')) {
     carrito = ObtenerStorage('carrito');
     renderizarCarrito(contenedorProductosCarrito, carrito);
-} else {
-    console.log('No hay nada en el carrito');
-}
+} 
 
 
 //!Renderizo los Productos
@@ -129,14 +129,6 @@ function renderizarCarrito(contenedor, array) {
 }
 
 
-const finalizarCompra = document.getElementById('finalizarCompra');
-finalizarCompra.addEventListener('click', finalizarCompraRespuesta);
 
-function finalizarCompraRespuesta(events) {
-    Swal.fire({
-        icon: 'success',
-        title: 'Gracias por su compra',
-        text: 'Pronto recibira su pedido',
-        timer: 2000
-    })
-}
+
+
