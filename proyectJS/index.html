@@ -96,7 +96,43 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ingresa tu nombre de usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container px-4 px-lg-5">
+
+                        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <form>
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                for="name">Nombre</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" id="nombre" name="user_name"
+                                                required>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="boton">Guardar registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="finalizarCompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingresa tus datos para finalizar la compra</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -117,11 +153,20 @@
                                         <br>
                                         <div class="input-group input-group-sm mb-3">
                                             <span class="input-group-text" id="inputGroup-sizing-sm"
-                                                for="email">Correo</span>
+                                                for="email">Telefono</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" id="telefono" name="user_email"
+                                                required>
+                                        </div>
+                                        <br>
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm"
+                                                for="email">Correo electronico</span>
                                             <input type="text" class="form-control" aria-label="Sizing example input"
                                                 aria-describedby="inputGroup-sizing-sm" id="correo" name="user_email"
                                                 required>
                                         </div>
+                                        
                                     </form>
                                 </div>
                             </div>
@@ -130,7 +175,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="boton">Guardar registro</button>
+                    <button type="button" class="btn btn-primary">Guardar registro</button>
                 </div>
             </div>
         </div>
@@ -208,7 +253,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Productos de tienda -->
         <div class="collection-list mt-4 row gx-0 gy-3" id="containerProducts">
 
@@ -218,25 +263,7 @@
 
         </div>
     </div>
-    <!-- newsletter -->
-    <section id="newsletter" class="py-5">
-        <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="title text-center pt-3 pb-5">
-                    <h2 class="position-relative d-inline-block ms-4">Newsletter Suscripción</h2>
-                </div>
-
-                <p class="text-center text-muted">Suscribete para tener descuentos unicos y mantenerte informado de
-                    nuestros nuevos productos</p>
-                <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="Escribi tu correo...">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+  
     <!-- footer -->
     <footer class="bg-dark py-5" id="contacto">
         <div class="container">

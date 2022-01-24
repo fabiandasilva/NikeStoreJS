@@ -1,6 +1,7 @@
 //!Llamo los elementos que voy a utilizar
 let nombreCapturado = document.getElementById("nombre").value;
 let correoCapturado = document.getElementById("correo").value;
+let telefonoCapturado = document.getElementById("telefono").value;
 
 $(() => {
     RenderizarProductos(productos, contenedorProductos);
@@ -92,10 +93,11 @@ function RenderizarCarrito(cart, container) {
     </div>
     <h5 class="mb-0">Total ${totalCompra}</h5>    
     <br>    
-    <h5 class="mb-0">Cantidad ${totalUnidades}</h5>    
-    <a href="#"><button class="btn btn-success ml-auto comprarButton" type="button"
-    data-toggle="modal" data-target="#comprarModal"id="finalizarCompra">Finalizar compra</button>    </a>
-</div>`);
+    <h5 class="mb-0">Cantidad ${totalUnidades}</h5> 
+<button type="button" class="btn position-relative" data-bs-toggle="modal"
+data-bs-target="#finalizarCompra">Finalizar compra
+</button>
+`);
 }
 
 
@@ -180,9 +182,10 @@ $("#filtroUrban").click((e) => {
 
 //!Simulacion de registro de usario
 function GuardarDatos() {
-    function NewUsers(nombre, correo) {
+    function NewUsers(nombre, correo, telefono) {
         this.nombre = nombre;
         this.correo = correo;
+        this.telefono = telefono;
     }
     usuarios = new NewUsers(nombreCapturado, correoCapturado);
     cargarDatos();
