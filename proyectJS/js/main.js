@@ -1,3 +1,6 @@
+let nombreCapturado = document.getElementById("nombre").value;
+let correoCapturado = document.getElementById("correo").value;
+
 $(() => {
     renderProducts(productos, contenedorProductos);
     renderCart(getStorage(), contenedorCarrito);
@@ -25,7 +28,7 @@ function renderProducts(productos, etiqueta) {
     };
     capturaBotonAgregar();
 };
-
+//!Renderizo el carrito y agrego las propiedades que le voy a pasar
 function renderCart(cart, container) {
     let totalCompra = 0;
     let totalUnidades = 0;
@@ -33,13 +36,34 @@ function renderCart(cart, container) {
     for (const product of cart) {
         totalCompra += product.precio * product.cantidad;
         container.prepend(`
-           <tr class="">
-               <td><span id="btnMinus${product.id}" class="btn">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="btn">+</span></td>
-               <td>${product.modelo}</td>
-               <td>${product.precio}</td>
-               <td>${product.precio*product.cantidad}</td>                
-               <td><button id="btnDel${product.id}" class="quitar btn btn-danger">X</button></td>
-           </tr>`);
+        <div class="container">
+        <div class="row shoppingCartItem" id="contenedor-productos-carrito">
+        <div class="col-6">
+            <div
+                class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <img class="shopping-cart-image">
+                <h6
+                    class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">
+                   ${product.modelo}
+                </h6>
+            </div>
+        </div>
+        <div class="col-2">
+            <div
+                class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <p class="item-price mb-0 shoppingCartItemPrice">$ ${product.precio}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div
+                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+              
+                <span id="btnMinus${product.id}" class="badge rounded-pill bg-secondary">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="badge rounded-pill bg-secondary">+</span>
+                <span id="btnDel${product.id}" class="quitar badge bg-danger">X</span>
+            </div>
+        </div>
+    </div>    
+</div>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
             quitar(product.id);
@@ -57,11 +81,16 @@ function renderCart(cart, container) {
     }
     cart.map(e => totalUnidades += e.cantidad)
     container.append(`
-       <tr>    
-           <th scope="row">${totalUnidades}</th>
-           <td colspan="2" class="">Totales</td>
-           <td>${totalCompra}</td>
-       </tr>`);
+    <div class="col-12">
+    <div class="shopping-cart-total d-flex align-items-center">
+    <br>
+    </div>
+    <h5 class="mb-0">Total ${totalCompra}</h5>    
+    <br>    
+    <h5 class="mb-0">Cantidad ${totalUnidades}</h5>    
+    <a href="#"><button class="btn btn-success ml-auto comprarButton" type="button"
+    data-toggle="modal" data-target="#comprarModal"id="finalizarCompra">Finalizar compra</button>    </a>
+</div>`);
 }
 
 function setStorage(array) {
@@ -73,11 +102,19 @@ function getStorage() {
 }
 
 function capturaBotonAgregar() {
+
     const botones = document.getElementsByClassName("agregar");
     for (const boton of botones) {
         boton.addEventListener("click", (e) => {
             agregar((e.target.id).substring(6))
+            //!Alert de producto agregado
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto Agregado',
+                timer: 800
+            })
         });
+
     };
 };
 
@@ -88,7 +125,7 @@ function agregar(id) { //cuando invocas la funcion dentro del evento le pasas el
     const prodSelec = productos.find(e => e.id === id); //busco el objeto cuya propiedad coincida con el id capturado por el evento y le agrego un propiedad cantidad
     const prodCart = {
         id: prodSelec.id,
-        nombre: prodSelec.nombre,
+        modelo: prodSelec.modelo,
         precio: prodSelec.precio,
         cantidad: 1
     };
@@ -106,7 +143,7 @@ function quitar(id) {
 
 $("#filtroTodos").click((e) => {
     e.preventDefault();
-    const filterTodos = productos.filter(e => e.categoria == "Training","Running","Urban");
+    const filterTodos = productos.filter(e => e.categoria == "Training", "Running", "Urban");
     renderProducts(filterTodos, contenedorProductos);
 });
 $("#filtroTraining").click((e) => {
@@ -126,3 +163,35 @@ $("#filtroUrban").click((e) => {
     const filterUrban = productos.filter(e => e.categoria == "Urban");
     renderProducts(filterUrban, contenedorProductos);
 });
+
+
+function GuardarDatos() {
+    function NewUsers(nombre, correo) {
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+    usuarios = new NewUsers(nombreCapturado, correoCapturado);
+    cargarDatos();
+    mostrarDatos();
+
+}
+
+let ArrayDatos = [];
+
+function cargarDatos() {
+    ArrayDatos.push(usuarios);
+    console.log(ArrayDatos);
+}
+
+function mostrarDatos() {
+    const dataName = document.getElementById("dataName")
+    let span = document.createElement('span');
+    dataName.appendChild(span);
+
+    
+    span.innerHTML =  document.getElementById("nombre").value;
+    span.setAttribute('class', 'myclass');
+}
+
+
+document.getElementById("boton").addEventListener("click", GuardarDatos);

@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="shopping-cart-header">
-                                        <h6>Cantidad</h6>
+                                        <h6 class="text">Cantidad</h6>
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +200,9 @@
                         </div>
 
                         <!-- Guardos los productos del carrito -->
-                        <div class="container" id="contenedorCarrito">
-
+                        <div class="container" id="containerCart">
+                            <button class="btn btn-success ml-auto comprarButton" type="button"
+                            data-toggle="modal" data-target="#comprarModal"id="finalizarCompra">Finalizar compra</button> 
                         </div>
                     </section>
                 </div>
@@ -215,24 +216,6 @@
         </div>
         <div class="col-md-6 col-lg-4 col-xl-3 p-2" style="width: 18rem;" id="contenedor-carrito">
 
-        </div>
-    </div>
-
-    <div class="container d-flex justify-content-around row m-auto my-5" style="width:50rem;">
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Cant</th>
-                        <th>Item</th>
-                        <th>Precio</th>
-                        <th>Total</th>
-                        <th>Quitar</th>
-                    </tr>
-                </thead>
-                <tbody id="containerCart">
-                </tbody>
-            </table>
         </div>
     </div>
     <!-- newsletter -->
