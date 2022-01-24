@@ -106,5 +106,12 @@ const productos = [{
         categoria: "Urbano",
         imagen: "./img/urban/Nike_Wearallday/imagen1.jpg",
     },
+    {
+        id: "16",
+        modelo: "Tablet",
+        categoria: "computacion",
+        precio: 20000,
+        img: "./assets/imagenes/tablet.jpg"
+    },
 
 ];

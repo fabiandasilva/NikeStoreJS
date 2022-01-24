@@ -1,15 +1,18 @@
+//!Llamo los elementos que voy a utilizar
 let nombreCapturado = document.getElementById("nombre").value;
 let correoCapturado = document.getElementById("correo").value;
 
 $(() => {
-    renderProducts(productos, contenedorProductos);
-    renderCart(getStorage(), contenedorCarrito);
+    RenderizarProductos(productos, contenedorProductos);
+    RenderizarCarrito(ObtenerStorage(), contenedorCarrito);
 })
 
 const contenedorProductos = document.getElementById("containerProducts");
 const contenedorCarrito = $("#containerCart");
 
-function renderProducts(productos, etiqueta) {
+
+//!Renderizo los producto que tengo en el array
+function RenderizarProductos(productos, etiqueta) {
     etiqueta.innerHTML = "";
     for (producto of productos) {
         etiqueta.innerHTML += `        
@@ -26,10 +29,12 @@ function renderProducts(productos, etiqueta) {
     </div>
        `
     };
-    capturaBotonAgregar();
+    BtnAgregar();
 };
+
+
 //!Renderizo el carrito y agrego las propiedades que le voy a pasar
-function renderCart(cart, container) {
+function RenderizarCarrito(cart, container) {
     let totalCompra = 0;
     let totalUnidades = 0;
     container.html("");
@@ -66,17 +71,17 @@ function renderCart(cart, container) {
 </div>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
-            quitar(product.id);
+            BtnQuitar(product.id);
         });
         $("#btnPlus" + product.id).on("click", () => {
             product.cantidad++
-            setStorage(cart)
-            renderCart(cart, container)
+            GuardarStorage(cart)
+            RenderizarCarrito(cart, container)
         })
         $("#btnMinus" + product.id).on("click", () => {
             product.cantidad--
-            setStorage(cart)
-            renderCart(cart, container)
+            GuardarStorage(cart)
+            RenderizarCarrito(cart, container)
         })
     }
     cart.map(e => totalUnidades += e.cantidad)
@@ -93,16 +98,19 @@ function renderCart(cart, container) {
 </div>`);
 }
 
-function setStorage(array) {
+
+//!funciones para guardar y obtener el storage
+function GuardarStorage(array) {
     localStorage.setItem("carrito", JSON.stringify(array));
 }
 
-function getStorage() {
+function ObtenerStorage() {
     return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-function capturaBotonAgregar() {
 
+//!Capturo el boton agregar 
+function BtnAgregar() {
     const botones = document.getElementsByClassName("agregar");
     for (const boton of botones) {
         boton.addEventListener("click", (e) => {
@@ -119,10 +127,10 @@ function capturaBotonAgregar() {
 };
 
 
-
-function agregar(id) { //cuando invocas la funcion dentro del evento le pasas el id que te llego
-    const arrayCarrito = getStorage(); // asignacion condicional, se asigna el localStorage si existe o sino un array vacio
-    const prodSelec = productos.find(e => e.id === id); //busco el objeto cuya propiedad coincida con el id capturado por el evento y le agrego un propiedad cantidad
+//!Agrego el id al storage y renderizo el carrito
+function agregar(id) {
+    const arrayCarrito = ObtenerStorage();
+    const prodSelec = productos.find(e => e.id === id);
     const prodCart = {
         id: prodSelec.id,
         modelo: prodSelec.modelo,
@@ -131,40 +139,46 @@ function agregar(id) { //cuando invocas la funcion dentro del evento le pasas el
     };
     let index = arrayCarrito.findIndex(e => e.id === id); //busco, si existe, el indice del producto seleccionado
     index == -1 ? arrayCarrito.push(prodCart) : arrayCarrito[index].cantidad++; //agrego el objeto que encontre en el paso antetior
-    setStorage(arrayCarrito); // guardo el array nuevo dentro del storage
-    renderCart(arrayCarrito, contenedorCarrito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
+    GuardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
+    RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
 };
 
-function quitar(id) {
+
+//!Si el id existe y conincide lo saco del carrito y luego lo renderizo
+function BtnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
-    setStorage(arrayFinal);
-    renderCart(arrayFinal, contenedorCarrito);
+    GuardarStorage(arrayFinal);
+    RenderizarCarrito(arrayFinal, contenedorCarrito);
 }
 
+
+//!Filtros de categorias
 $("#filtroTodos").click((e) => {
     e.preventDefault();
-    const filterTodos = productos.filter(e => e.categoria == "Training", "Running", "Urban");
-    renderProducts(filterTodos, contenedorProductos);
+    const filterTodos = productos.filter(e => e.categoria);
+    RenderizarProductos(filterTodos, contenedorProductos);
 });
+
 $("#filtroTraining").click((e) => {
     e.preventDefault();
-    const filterTraining = productos.filter(e => e.categoria == "Training");
-    renderProducts(filterTraining, contenedorProductos);
+    const filterTraining = productos.filter(e => e.categoria == "Entrenar");
+    RenderizarProductos(filterTraining, contenedorProductos);
 });
 
 $("#filtroRunning").click((e) => {
     e.preventDefault()
-    const filterRunning = productos.filter(e => e.categoria == "Running");
-    renderProducts(filterRunning, contenedorProductos);
+    const filterRunning = productos.filter(e => e.categoria == "Correr");
+    RenderizarProductos(filterRunning, contenedorProductos);
 });
 
 $("#filtroUrban").click((e) => {
     e.preventDefault()
-    const filterUrban = productos.filter(e => e.categoria == "Urban");
-    renderProducts(filterUrban, contenedorProductos);
+    const filterUrban = productos.filter(e => e.categoria == "Urbano");
+    RenderizarProductos(filterUrban, contenedorProductos);
 });
 
 
+//!Simulacion de registro de usario
 function GuardarDatos() {
     function NewUsers(nombre, correo) {
         this.nombre = nombre;
@@ -180,7 +194,6 @@ let ArrayDatos = [];
 
 function cargarDatos() {
     ArrayDatos.push(usuarios);
-    console.log(ArrayDatos);
 }
 
 function mostrarDatos() {
@@ -188,8 +201,8 @@ function mostrarDatos() {
     let span = document.createElement('span');
     dataName.appendChild(span);
 
-    
-    span.innerHTML =  document.getElementById("nombre").value;
+
+    span.innerHTML = document.getElementById("nombre").value;
     span.setAttribute('class', 'myclass');
 }
 
