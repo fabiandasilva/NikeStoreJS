@@ -1,117 +1,76 @@
-//!Defino los productos en un array
-const productos = [{
-        id: "1",
-        modelo: "Nike Air Zoom Pegasus 38",
-        precio: 18000,
-        categoria: "Correr",
-        imagen: "./img/running/Epic_React__Flyknit_2/imagen1.jpg"
-    },
-    {
-        id: "2",
-        modelo: "Nike Epic React Flyknit 2",
-        precio: 18000,
-        categoria: "Correr",
-        imagen: "./img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg"
-    },
-    {
-        id: "3",
-        modelo: "Nike Renew Run 2",
-        precio: 14728,
-        categoria: "Correr",
-        imagen: "./img/running/Nike_Joyride_Dual_Run/imagen1.jpg"
-    },
-    {
-        id: "4",
-        modelo: "Nike Joyride Dual Run",
-        precio: 24728,
-        categoria: "Correr",
-        imagen: "./img/running/Nike_Renew_Run_2/imagen1.jpg"
-    },
-    {
-        id: "5",
-        modelo: "Nike Revolution 5",
-        precio: 30000,
-        categoria: "Correr",
-        imagen: "./img/running/Nike_Revolution_5/imagen1.jpg",
-    },
+//!Defino los productos 
+class Producto {
+    constructor(id, imagen, categoria, modelo, precio) {
+        this.id = id;
+        this.imagen = imagen;
+        this.categoria = categoria;
+        this.modelo = modelo;
+        this.precio = precio;
+    }
+}
 
-    {
-        id: "6",
-        modelo: "Nike Air Max Bella Training 4",
-        precio: 30000,
-        categoria: "Entrenar",
-        imagen: "./img/training/Nike_air_Max_Bella_trainning_4/imagen1.jpg",
-    },
-    {
-        id: "7",
-        modelo: "Nike City Trainer",
-        precio: 32000,
-        categoria: "Entrenar",
-        imagen: "./img/training/Nike_city_trainer/imagen1.jpg",
-    },
-    {
-        id: "8",
-        modelo: "Nike In-Season Tr-9",
-        precio: 42000,
-        categoria: "Entrenar",
-        imagen: "./img/training/Nike_In-Season-Tr_9/imagen1.jpg",
-    },
-    {
-        id: "9",
-        modelo: "Nike legend Essential 2",
-        precio: 42000,
-        categoria: "Entrenar",
-        imagen: "./img/training/Nike_legend_Essentia_2/imagen1.jpg",
-    },
-    {
-        id: "10",
-        modelo: "Nike Superrep Go",
-        precio: 52000,
-        categoria: "Entrenar",
-        imagen: "./img/training/Nike_Superrep_Go/imagen1.jpg",
-    },
+const productos = [];
 
-    {
-        id: "11",
-        modelo: "Nike Jordan air max 200",
-        precio: 35000,
-        categoria: "Urbano",
-        imagen: "./img/urban/Jordan_air_max_200/imagen1.jpg",
-    },
-    {
-        id: "12",
-        modelo: "Nike Jordan air max 90",
-        precio: 35000,
-        categoria: "Urbano",
-        imagen: "./img/urban/Nike_Air_Max_90/imagen1.jpg",
-    },
-    {
-        id: "13",
-        modelo: "Nike Court Legacy",
-        precio: 33000,
-        categoria: "Urbano",
-        imagen: "./img/urban/Nike_Court_Legacy/imagen1.jpg",
-    },
-    {
-        id: "14",
-        modelo: "Nike Crater impact",
-        categoria: "Urbano",
-        precio: 35000,
-        imagen: "./img/urban/Nike_Crater_impact/imagen1.jpg",
-    },
-    {
-        id: "15",
-        modelo: "Nike Wearallday",
-        precio: 42000,
-        categoria: "Urbano",
-        imagen: "./img/urban/Nike_Wearallday/imagen1.jpg",
-    },
-    {
-        id: "16",
-        modelo: "Tablet",
-        categoria: "computacion",
-        precio: 20000,
-        img: "./assets/imagenes/tablet.jpg"
-    },
 
-];
+const producto1 = new Producto("1", "../img/running/Epic_React__Flyknit_2/imagen1.jpg", "Correr", "Nike Air Zoom Pegasus 38", 18000);
+const producto2 = new Producto("2", "../img/running/Nike_ Air_ Zoom_Pegasus_ 38/imagen1.jpg", "Correr", "Nike Epic React Flyknit 2", 18000);
+const producto3 = new Producto("3", "../img/running/Nike_Joyride_Dual_Run/imagen1.jpg", "Correr", "Nike Renew Run 2", 14728);
+const producto4 = new Producto("4", "../img/running/Nike_Renew_Run_2/imagen1.jpg", "Correr", "Nike Joyride Dual Run", 24728);
+const producto5 = new Producto("5", "../img/running/Nike_Revolution_5/imagen1.jpg", "Correr", "Nike Revolution 5", 30000);
+
+const producto6 = new Producto("6", "../img/training/Nike_air_Max_Bella_trainning_4/imagen1.jpg", "Entrenar", "Nike Air Max Bella Training 4", 30000);
+const producto7 = new Producto("7", "../img/training/Nike_city_trainer/imagen1.jpg", "Entrenar", "Nike City Trainer", 32000);
+const producto8 = new Producto("8", "../img/training/Nike_In-Season-Tr_9/imagen1.jpg", "Entrenar", "Nike In-Season Tr-9", 42000);
+const producto9 = new Producto("9", "../img/training/Nike_legend_Essentia_2/imagen1.jpg", "Entrenar", "Nike legend Essential 2", 42000);
+const producto10 = new Producto("10", "../img/training/Nike_Superrep_Go/imagen1.jpg", "Entrenar", "Nike Superrep Go", 52000);
+
+const producto11 = new Producto("11", "../img/urban/Jordan_air_max_200/imagen1.jpg", "Urbano", "Nike Jordan air max 200", 35000);
+const producto12 = new Producto("12", "../img/urban/Nike_Air_Max_90/imagen1.jpg", "Urbano", "Nike Jordan air max 90", 35000);
+const producto13 = new Producto("13", "../img/urban/Nike_Court_Legacy/imagen1.jpg", "Urbano", "Nike Court Legacy", 33000);
+const producto14 = new Producto("14", "../img/urban/Nike_Crater_impact/imagen1.jpg", "Urbano", "Nike Crater impact", 35000);
+const producto15 = new Producto("15", "../img/urban/Nike_Wearallday/imagen1.jpg", "Urbano", "Nike Wearallday", 42000);
+
+productos.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15);
+
+function GuardarDatos() {
+
+    function NewUsers(nombre, correo, telefono) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+    usuarios = new NewUsers(nombreCapturado, correoCapturado);
+    cargarDatos();
+    mostrarDatos();
+
+}
+//! Ver esto
+/* class RegistroDatos {
+    constructor(nombre, correo, telefono) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+}
+usuarios = new NewUsers(nombreCapturado, correoCapturado);
+
+let ArrayDatos = [];
+
+
+function mostrarDatos() {
+    const dataName = document.getElementById("dataName")
+    let span = document.createElement('span');
+    dataName.appendChild(span);
+    span.innerHTML = document.getElementById("nombre").value;
+    span.setAttribute('class', 'myclass');
+}
+
+
+function cargarDatos() {
+    ArrayDatos.push(usuarios);
+}
+
+
+
+document.getElementById("boton").addEventListener("click", GuardarDatos);
+ */

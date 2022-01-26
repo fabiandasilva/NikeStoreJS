@@ -1,14 +1,13 @@
 //!Llamo los elementos que voy a utilizar
 let nombreCapturado = document.getElementById("nombre").value;
-let correoCapturado = document.getElementById("correo").value;
-let telefonoCapturado = document.getElementById("telefono").value;
 
 $(() => {
     RenderizarProductos(productos, contenedorProductos);
     RenderizarCarrito(ObtenerStorage(), contenedorCarrito);
+    document.getElementById("boton").addEventListener("click", GuardarDatos);
 })
 
-const contenedorProductos = document.getElementById("containerProducts");
+const contenedorProductos = $('#containerProducts')[0];
 const contenedorCarrito = $("#containerCart");
 
 
@@ -113,7 +112,7 @@ function ObtenerStorage() {
 
 //!Capturo el boton agregar 
 function BtnAgregar() {
-    const botones = document.getElementsByClassName("agregar");
+    const botones = document.querySelectorAll(".agregar");
     for (const boton of botones) {
         boton.addEventListener("click", (e) => {
             agregar((e.target.id).substring(6))
@@ -127,7 +126,6 @@ function BtnAgregar() {
 
     };
 };
-
 
 //!Agrego el id al storage y renderizo el carrito
 function agregar(id) {
@@ -181,33 +179,22 @@ $("#filtroUrban").click((e) => {
 
 
 //!Simulacion de registro de usario
-function GuardarDatos() {
-    function NewUsers(nombre, correo, telefono) {
+class User {
+    constructor(nombre) {
         this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
     }
-    usuarios = new NewUsers(nombreCapturado, correoCapturado);
-    cargarDatos();
-    mostrarDatos();
-
 }
 
-let ArrayDatos = [];
+usuario = new User(nombreCapturado);
 
-function cargarDatos() {
-    ArrayDatos.push(usuarios);
-}
-
-function mostrarDatos() {
+function GuardarDatos() {
+    ArrayDatos = [];
+    ArrayDatos.push(usuario);
     const dataName = document.getElementById("dataName")
     let span = document.createElement('span');
     dataName.appendChild(span);
 
 
     span.innerHTML = document.getElementById("nombre").value;
-    span.setAttribute('class', 'myclass');
 }
-
-
-document.getElementById("boton").addEventListener("click", GuardarDatos);
+GuardarDatos();

@@ -31,7 +31,7 @@
 
                 <button type="button" class="btn position-relative" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <span id="dataName"> <i class="fa fa-user"> </i></span>
+                    <span> <i class="fa fa-user"> </i></span>
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
                 </button>
 
@@ -46,6 +46,7 @@
                     <i class="fa fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
                 </button>
+                <span id="dataName"></span>
             </div>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -96,7 +97,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ingresa tu nombre de usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -121,8 +122,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="boton">Guardar registro</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="boton">Guardar registro</button>
                 </div>
             </div>
         </div>
@@ -135,47 +135,103 @@
                     <h5 class="modal-title" id="exampleModalLabel">Ingresa tus datos para finalizar la compra</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                
+	<div class="contenedor">
 
-                    <div class="container px-4 px-lg-5">
+		<!-- Tarjeta -->
+		<section class="tarjeta" id="tarjeta">
+			<div class="delantera">
+				<div class="logo-marca" id="logo-marca">
+					<img src="./img/tarjeta/logos/mastercard.png" alt=""> 
+				</div>
+				<img src="img/tarjeta/chip-tarjeta.png" class="chip" alt="">
+				<div class="datos">
+					<div class="grupo" id="numero">
+						<p class="label">Número Tarjeta</p>
+						<p class="numero">#### #### #### ####</p>
+					</div>
+					<div class="flexbox">
+						<div class="grupo" id="nombre">
+							<p class="label">Nombre Tarjeta</p>
+							<p class="nombre">Loren ipsum</p>
+						</div>
 
-                        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <form>
-                                        <div class="input-group input-group-sm mb-3">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm"
-                                                for="name">Nombre</span>
-                                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-sm" id="nombre" name="user_name"
-                                                required>
-                                        </div>
-                                        <br>
-                                        <div class="input-group input-group-sm mb-3">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm"
-                                                for="email">Telefono</span>
-                                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-sm" id="telefono" name="user_email"
-                                                required>
-                                        </div>
-                                        <br>
-                                        <div class="input-group input-group-sm mb-3">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm"
-                                                for="email">Correo electronico</span>
-                                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                                aria-describedby="inputGroup-sizing-sm" id="correo" name="user_email"
-                                                required>
-                                        </div>
-                                        
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+						<div class="grupo" id="expiracion">
+							<p class="label">Expiracion</p>
+							<p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="trasera">
+				<div class="barra-magnetica"></div>
+				<div class="datos">
+					<div class="grupo" id="firma">
+						<p class="label">Firma</p>
+						<div class="firma">
+							<p></p>
+						</div>
+					</div>
+					<div class="grupo" id="ccv">
+						<p class="label">CCV</p>
+						<p class="ccv"></p>
+					</div>
+				</div>
+				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem,
+					voluptates illo.</p>
+				<a href="#" class="link-banco">www.tubancofalso.com</a>
+			</div>
+		</section>
+
+		<!-- Contenedor Boton Abrir Formulario -->
+		<div class="contenedor-btn">
+			<button class="btn-abrir-formulario" id="btn-abrir-formulario">
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
+
+		<!-- Formulario -->
+		<form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+			<div class="grupo">
+				<label for="inputNumero">Número Tarjeta</label>
+				<input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+			</div>
+			<div class="grupo">
+				<label for="inputNombre">Nombre</label>
+				<input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+			</div>
+			<div class="flexbox">
+				<div class="grupo expira">
+					<label for="selectMes">Expiracion</label>
+					<div class="flexbox">
+						<div class="grupo-select">
+							<select name="mes" id="selectMes">
+								<option disabled selected>Mes</option>
+							</select>
+							<i class="fas fa-angle-down"></i>
+						</div>
+						<div class="grupo-select">
+							<select name="year" id="selectYear">
+								<option disabled selected>Año</option>
+							</select>
+							<i class="fas fa-angle-down"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="grupo ccv">
+					<label for="inputCCV">CCV</label>
+					<input type="text" id="inputCCV" maxlength="3">
+				</div>
+			</div>
+			<button type="submit" class="btn-enviar">Enviar</button>
+		</form>
+        
+	</div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar registro</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Comprar</button>
                 </div>
             </div>
         </div>
@@ -367,6 +423,8 @@
 
     <!-- Js principal -->
     <script src="./js/main.js"></script>
+    <!-- Js Tarjeta -->
+    <script src="./js/paycard.js"></script>
 
     <!-- SweetAler2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
