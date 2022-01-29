@@ -355,3 +355,8 @@ body {
 .formulario-tarjeta .btn-enviar:hover {
 	background: #1850b1;
 }
+
+.imgFav{
+	width: 200px;
+	height: 200px;
+}

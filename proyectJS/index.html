@@ -36,7 +36,7 @@
                 </button>
 
                 <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#favorito" aria-expanded="false" aria-controls="collapseWidthExample">
+                    data-bs-target="#containerFavModal" aria-expanded="false" aria-controls="collapseWidthExample">
                     <i class="fa fa-heart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
                 </button>
@@ -82,7 +82,6 @@
             <div class="text-center carousel-item">
                 <h2 class="text-capitalize text-white">Nike Air Zoom Pegasus 38</h2>
                 <h1 class="text-uppercase py-2 fw-bold text-white">VELOCIDAD CONFIABLE TODOS LOS DÍAS</h1>
-                <a href="#" class="btn mt-3 text-uppercase">Comprar ahora</a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#header" data-bs-slide="prev">
@@ -122,7 +121,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="boton">Guardar registro</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="boton">Guardar
+                        registro</button>
                 </div>
             </div>
         </div>
@@ -135,100 +135,102 @@
                     <h5 class="modal-title" id="exampleModalLabel">Ingresa tus datos para finalizar la compra</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
-	<div class="contenedor">
 
-		<!-- Tarjeta -->
-		<section class="tarjeta" id="tarjeta">
-			<div class="delantera">
-				<div class="logo-marca" id="logo-marca">
-					<img src="./img/tarjeta/logos/mastercard.png" alt=""> 
-				</div>
-				<img src="img/tarjeta/chip-tarjeta.png" class="chip" alt="">
-				<div class="datos">
-					<div class="grupo" id="numero">
-						<p class="label">Número Tarjeta</p>
-						<p class="numero">#### #### #### ####</p>
-					</div>
-					<div class="flexbox">
-						<div class="grupo" id="nombre">
-							<p class="label">Nombre Tarjeta</p>
-							<p class="nombre">Loren ipsum</p>
-						</div>
+                <div class="contenedor">
 
-						<div class="grupo" id="expiracion">
-							<p class="label">Expiracion</p>
-							<p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
-						</div>
-					</div>
-				</div>
-			</div>
+                    <!-- Tarjeta -->
+                    <section class="tarjeta" id="tarjeta">
+                        <div class="delantera">
+                            <div class="logo-marca" id="logo-marca">
+                                <img src="./img/tarjeta/logos/mastercard.png" alt="">
+                            </div>
+                            <img src="img/tarjeta/chip-tarjeta.png" class="chip" alt="">
+                            <div class="datos">
+                                <div class="grupo" id="numero">
+                                    <p class="label">Número Tarjeta</p>
+                                    <p class="numero">#### #### #### ####</p>
+                                </div>
+                                <div class="flexbox">
+                                    <div class="grupo" id="nombre">
+                                        <p class="label">Nombre Tarjeta</p>
+                                        <p class="nombre">Loren ipsum</p>
+                                    </div>
 
-			<div class="trasera">
-				<div class="barra-magnetica"></div>
-				<div class="datos">
-					<div class="grupo" id="firma">
-						<p class="label">Firma</p>
-						<div class="firma">
-							<p></p>
-						</div>
-					</div>
-					<div class="grupo" id="ccv">
-						<p class="label">CCV</p>
-						<p class="ccv"></p>
-					</div>
-				</div>
-				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem,
-					voluptates illo.</p>
-				<a href="#" class="link-banco">www.tubancofalso.com</a>
-			</div>
-		</section>
+                                    <div class="grupo" id="expiracion">
+                                        <p class="label">Expiracion</p>
+                                        <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-		<!-- Contenedor Boton Abrir Formulario -->
-		<div class="contenedor-btn">
-			<button class="btn-abrir-formulario" id="btn-abrir-formulario">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
+                        <div class="trasera">
+                            <div class="barra-magnetica"></div>
+                            <div class="datos">
+                                <div class="grupo" id="firma">
+                                    <p class="label">Firma</p>
+                                    <div class="firma">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="grupo" id="ccv">
+                                    <p class="label">CCV</p>
+                                    <p class="ccv"></p>
+                                </div>
+                            </div>
+                            <p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+                                exercitationem,
+                                voluptates illo.</p>
+                            <a href="#" class="link-banco">www.tubancofalso.com</a>
+                        </div>
+                    </section>
 
-		<!-- Formulario -->
-		<form action="" id="formulario-tarjeta" class="formulario-tarjeta">
-			<div class="grupo">
-				<label for="inputNumero">Número Tarjeta</label>
-				<input type="text" id="inputNumero" maxlength="19" autocomplete="off">
-			</div>
-			<div class="grupo">
-				<label for="inputNombre">Nombre</label>
-				<input type="text" id="inputNombre" maxlength="19" autocomplete="off">
-			</div>
-			<div class="flexbox">
-				<div class="grupo expira">
-					<label for="selectMes">Expiracion</label>
-					<div class="flexbox">
-						<div class="grupo-select">
-							<select name="mes" id="selectMes">
-								<option disabled selected>Mes</option>
-							</select>
-							<i class="fas fa-angle-down"></i>
-						</div>
-						<div class="grupo-select">
-							<select name="year" id="selectYear">
-								<option disabled selected>Año</option>
-							</select>
-							<i class="fas fa-angle-down"></i>
-						</div>
-					</div>
-				</div>
+                    <!-- Contenedor Boton Abrir Formulario -->
+                    <div class="contenedor-btn">
+                        <button class="btn-abrir-formulario" id="btn-abrir-formulario">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
 
-				<div class="grupo ccv">
-					<label for="inputCCV">CCV</label>
-					<input type="text" id="inputCCV" maxlength="3">
-				</div>
-			</div>
-			<button type="submit" class="btn-enviar">Enviar</button>
-		</form>
-        
-	</div>
+                    <!-- Formulario -->
+                    <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+                        <div class="grupo">
+                            <label for="inputNumero">Número Tarjeta</label>
+                            <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+                        </div>
+                        <div class="grupo">
+                            <label for="inputNombre">Nombre</label>
+                            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+                        </div>
+                        <div class="flexbox">
+                            <div class="grupo expira">
+                                <label for="selectMes">Expiracion</label>
+                                <div class="flexbox">
+                                    <div class="grupo-select">
+                                        <select name="mes" id="selectMes">
+                                            <option disabled selected>Mes</option>
+                                        </select>
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                    <div class="grupo-select">
+                                        <select name="year" id="selectYear">
+                                            <option disabled selected>Año</option>
+                                        </select>
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grupo ccv">
+                                <label for="inputCCV">CCV</label>
+                                <input type="text" id="inputCCV" maxlength="3">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-enviar">Enviar</button>
+                    </form>
+
+                </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Comprar</button>
@@ -242,7 +244,7 @@
             <div class="row g-0">
                 <div class="d-flex flex-wrap justify-content-center mt-5 filter-button-group">
 
-                    <span type="button" class="btn m-2 text-dark " data-filter="*"id="filtroTodos">Todos</span>
+                    <span type="button" class="btn m-2 text-dark " data-filter="*" id="filtroTodos">Todos</span>
 
                     <span type="button" class="btn m-2 text-dark" id="filtroTraining">Training</span>
 
@@ -257,11 +259,17 @@
     <div class="container">
         <!-- Favoritos Oculto -->
         <div style="min-height: 50%;">
-            <div class="collapse collapse-horizontal" id="favorito">
-                <h1 class="text-center">Favoritos</h1>
-                <hr>
-                <div class="row">
-                    <p>Aca ira los productos Favoritos</p>
+            <div class="collapse collapse-horizontal" id="containerFavModal">
+                <div class="card card-body" style="width: 100%;">
+                    <section class="favorite-cart">
+                        <h1 class="text-center">Favoritos</h1>
+                        <!-- Guardos los productos del carrito -->
+
+                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" id="containerFav">
+
+
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -309,17 +317,14 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Productos de tienda -->
         <div class="collection-list mt-4 row gx-0 gy-3" id="containerProducts">
 
 
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-3 p-2" style="width: 18rem;" id="contenedor-carrito">
-
-        </div>
     </div>
-  
+
     <!-- footer -->
     <footer class="bg-dark py-5" id="contacto">
         <div class="container">
@@ -423,6 +428,7 @@
 
     <!-- Js principal -->
     <script src="./js/main.js"></script>
+
     <!-- Js Tarjeta -->
     <script src="./js/paycard.js"></script>
 

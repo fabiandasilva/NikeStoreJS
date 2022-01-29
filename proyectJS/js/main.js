@@ -7,9 +7,10 @@ $(() => {
     document.getElementById("boton").addEventListener("click", GuardarDatos);
 })
 
+
 const contenedorProductos = $('#containerProducts')[0];
 const contenedorCarrito = $("#containerCart");
-
+const contenedorFavorito = $("#containerFav");
 
 //!Renderizo los producto que tengo en el array
 function RenderizarProductos(productos, etiqueta) {
@@ -29,7 +30,8 @@ function RenderizarProductos(productos, etiqueta) {
     </div>
        `
     };
-    BtnAgregar();
+    btnAgregar();
+    btnFavorito();
 };
 
 
@@ -99,6 +101,18 @@ data-bs-target="#finalizarCompra">Finalizar compra
 `);
 }
 
+//!Renderizo la seccion de favorito
+function renderizarFavorito(favorite, containter) {
+    for (const products of favorite) {
+        containter.append(`
+            <div class="text-center">
+                <img src="${producto.imagen}" class="imgFav"></a>
+                <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>           
+            </div>
+        `)
+    }
+
+}
 
 //!funciones para guardar y obtener el storage
 function GuardarStorage(array) {
@@ -111,7 +125,7 @@ function ObtenerStorage() {
 
 
 //!Capturo el boton agregar 
-function BtnAgregar() {
+function btnAgregar() {
     const botones = document.querySelectorAll(".agregar");
     for (const boton of botones) {
         boton.addEventListener("click", (e) => {
@@ -127,12 +141,30 @@ function BtnAgregar() {
     };
 };
 
+
+//!Capturo el boton favorito 
+function btnFavorito() {
+    const btns = document.querySelectorAll(".favorito");
+    for (const btn of btns) {
+        btn.addEventListener("click", (e) => {
+            agregar((e.target.id).substring(6))
+            //!Alert de producto agregado
+            Swal.fire({
+                title: 'Favorito',
+                timer: 800
+            })
+        });
+
+    };
+};
+
 //!Agrego el id al storage y renderizo el carrito
 function agregar(id) {
     const arrayCarrito = ObtenerStorage();
     const prodSelec = productos.find(e => e.id === id);
     const prodCart = {
         id: prodSelec.id,
+        imagen: prodSelec.imagen,
         modelo: prodSelec.modelo,
         precio: prodSelec.precio,
         cantidad: 1
@@ -141,6 +173,7 @@ function agregar(id) {
     index == -1 ? arrayCarrito.push(prodCart) : arrayCarrito[index].cantidad++; //agrego el objeto que encontre en el paso antetior
     GuardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
     RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
+    renderizarFavorito(arrayCarrito, contenedorFavorito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
 };
 
 
