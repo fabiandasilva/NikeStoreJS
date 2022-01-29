@@ -3,8 +3,8 @@ let nombreCapturado = document.getElementById("nombre").value;
 
 $(() => {
     RenderizarProductos(productos, contenedorProductos);
-    RenderizarCarrito(ObtenerStorage(), contenedorCarrito);
-    document.getElementById("boton").addEventListener("click", GuardarDatos);
+    RenderizarCarrito(obtenerStorage(), contenedorCarrito);
+    document.getElementById("boton").addEventListener("click", guardarDatos);
 })
 
 
@@ -32,7 +32,7 @@ function RenderizarProductos(productos, etiqueta) {
     };
     btnAgregar();
     btnFavorito();
-};
+}
 
 
 //!Renderizo el carrito y agrego las propiedades que le voy a pasar
@@ -73,16 +73,16 @@ function RenderizarCarrito(cart, container) {
 </div>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
-            BtnQuitar(product.id);
+            btnQuitar(product.id);
         });
         $("#btnPlus" + product.id).on("click", () => {
             product.cantidad++
-            GuardarStorage(cart)
+            guardarStorage(cart)
             RenderizarCarrito(cart, container)
         })
         $("#btnMinus" + product.id).on("click", () => {
             product.cantidad--
-            GuardarStorage(cart)
+            guardarStorage(cart)
             RenderizarCarrito(cart, container)
         })
     }
@@ -103,7 +103,7 @@ data-bs-target="#finalizarCompra">Finalizar compra
 
 //!Renderizo la seccion de favorito
 function renderizarFavorito(favorite, containter) {
-    for (const products of favorite) {
+    for (const producto of favorite) {
         containter.append(`
             <div class="text-center">
                 <img src="${producto.imagen}" class="imgFav"></a>
@@ -115,11 +115,11 @@ function renderizarFavorito(favorite, containter) {
 }
 
 //!funciones para guardar y obtener el storage
-function GuardarStorage(array) {
+function guardarStorage(array) {
     localStorage.setItem("carrito", JSON.stringify(array));
 }
 
-function ObtenerStorage() {
+function obtenerStorage() {
     return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
@@ -160,7 +160,7 @@ function btnFavorito() {
 
 //!Agrego el id al storage y renderizo el carrito
 function agregar(id) {
-    const arrayCarrito = ObtenerStorage();
+    const arrayCarrito = obtenerStorage();
     const prodSelec = productos.find(e => e.id === id);
     const prodCart = {
         id: prodSelec.id,
@@ -171,16 +171,16 @@ function agregar(id) {
     };
     let index = arrayCarrito.findIndex(e => e.id === id); //busco, si existe, el indice del producto seleccionado
     index == -1 ? arrayCarrito.push(prodCart) : arrayCarrito[index].cantidad++; //agrego el objeto que encontre en el paso antetior
-    GuardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
+    guardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
     RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
     renderizarFavorito(arrayCarrito, contenedorFavorito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
 };
 
 
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
-function BtnQuitar(id) {
+function btnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
-    GuardarStorage(arrayFinal);
+    guardarStorage(arrayFinal);
     RenderizarCarrito(arrayFinal, contenedorCarrito);
 }
 
@@ -220,7 +220,7 @@ class User {
 
 usuario = new User(nombreCapturado);
 
-function GuardarDatos() {
+function guardarDatos() {
     ArrayDatos = [];
     ArrayDatos.push(usuario);
     const dataName = document.getElementById("dataName")
@@ -230,4 +230,4 @@ function GuardarDatos() {
 
     span.innerHTML = document.getElementById("nombre").value;
 }
-GuardarDatos();
+guardarDatos();
