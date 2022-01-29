@@ -75,12 +75,12 @@ function RenderizarCarrito(cart, container) {
         $("#btnDel" + product.id).on("click", (e) => {
             btnQuitar(product.id);
         });
-        $("#btnPlus" + product.id).on("click", () => {
+        $("#btnPlus" + product.id).on("click", (e) => {
             product.cantidad++
             guardarStorage(cart)
             RenderizarCarrito(cart, container)
         })
-        $("#btnMinus" + product.id).on("click", () => {
+        $("#btnMinus" + product.id).on("click", (e) => {
             product.cantidad--
             guardarStorage(cart)
             RenderizarCarrito(cart, container)
@@ -103,11 +103,11 @@ data-bs-target="#finalizarCompra">Finalizar compra
 
 //!Renderizo la seccion de favorito
 function renderizarFavorito(favorite, containter) {
-    for (const producto of favorite) {
+    for (const productos of favorite) {
         containter.append(`
             <div class="text-center">
-                <img src="${producto.imagen}" class="imgFav"></a>
-                <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>           
+                <img src="${productos.imagen}" class="imgFav"></a>
+                <p class="text-capitalize mt-3 mb-1">${productos.modelo}</p>           
             </div>
         `)
     }
@@ -147,7 +147,7 @@ function btnFavorito() {
     const btns = document.querySelectorAll(".favorito");
     for (const btn of btns) {
         btn.addEventListener("click", (e) => {
-            agregar((e.target.id).substring(6))
+            agregarProductoFavoritos((e.target.id).substring(6))
             //!Alert de producto agregado
             Swal.fire({
                 title: 'Favorito',
@@ -158,7 +158,10 @@ function btnFavorito() {
     };
 };
 
+
+
 //!Agrego el id al storage y renderizo el carrito
+//Cambiar nombre agregarProductos
 function agregar(id) {
     const arrayCarrito = obtenerStorage();
     const prodSelec = productos.find(e => e.id === id);
@@ -169,13 +172,28 @@ function agregar(id) {
         precio: prodSelec.precio,
         cantidad: 1
     };
+
     let index = arrayCarrito.findIndex(e => e.id === id); //busco, si existe, el indice del producto seleccionado
     index == -1 ? arrayCarrito.push(prodCart) : arrayCarrito[index].cantidad++; //agrego el objeto que encontre en el paso antetior
     guardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
-    RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
-    renderizarFavorito(arrayCarrito, contenedorFavorito) // muestro el array carrito, en este punto podria crear un nuevo render tipo tabla, por ej
+    RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito   
 };
+ 
+function agregarProductoFavoritos(id) {
+    const arrayCarritoFav = obtenerStorage();
+    const prodSelecFav = productos.find(e => e.id === id);
+    const prodCartFav = {
+        id: prodSelecFav.id,
+        imagen: prodSelecFav.imagen,
+        modelo: prodSelecFav.modelo,
+        precio: prodSelecFav.precio
+    };
 
+    let index = arrayCarritoFav.findIndex(e => e.id === id);
+    index == -1 ? arrayCarritoFav.push(prodCartFav):
+    guardarStorage(arrayCarritoFav); 
+    renderizarFavorito(arrayCarritoFav, contenedorFavorito) 
+}
 
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
 function btnQuitar(id) {
