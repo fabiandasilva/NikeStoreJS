@@ -1,23 +1,21 @@
 //!Llamo los elementos que voy a utilizar
-let nombreCapturado = document.getElementById("nombre").value;
-
 $(() => {
     RenderizarProductos(productos, contenedorProductos);
     RenderizarCarrito(obtenerStorage(), contenedorCarrito);
     document.getElementById("boton").addEventListener("click", guardarDatos);
 })
+const contenedorProductos = $('#containerProducts')[0],
+    contenedorCarrito = $("#containerCart"),
+    contenedorFavorito = $("#containerFav");
+let nombreCapturado = document.getElementById("nombre").value;
 
-
-const contenedorProductos = $('#containerProducts')[0];
-const contenedorCarrito = $("#containerCart");
-const contenedorFavorito = $("#containerFav");
 
 //!Renderizo los producto que tengo en el array
 function RenderizarProductos(productos, etiqueta) {
     etiqueta.innerHTML = "";
     for (producto of productos) {
         etiqueta.innerHTML += `        
-        <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+        <div class="col-md-6 col-lg-4 col-xl-3 p-2" id="card">
         <div class="special-img position-relative overflow-hidden">
             <img src="${producto.imagen}" class="w-100"></a>
         </div>
@@ -159,7 +157,6 @@ function btnFavorito() {
 };
 
 
-
 //!Agrego el id al storage y renderizo el carrito
 //Cambiar nombre agregarProductos
 function agregar(id) {
@@ -178,7 +175,7 @@ function agregar(id) {
     guardarStorage(arrayCarrito); // guardo el array nuevo dentro del storage
     RenderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito   
 };
- 
+
 function agregarProductoFavoritos(id) {
     const arrayCarritoFav = obtenerStorage();
     const prodSelecFav = productos.find(e => e.id === id);
@@ -190,9 +187,9 @@ function agregarProductoFavoritos(id) {
     };
 
     let index = arrayCarritoFav.findIndex(e => e.id === id);
-    index == -1 ? arrayCarritoFav.push(prodCartFav):
-    guardarStorage(arrayCarritoFav); 
-    renderizarFavorito(arrayCarritoFav, contenedorFavorito) 
+    index == -1 ? arrayCarritoFav.push(prodCartFav) :
+        guardarStorage(arrayCarritoFav);
+    renderizarFavorito(arrayCarritoFav, contenedorFavorito)
 }
 
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
@@ -249,3 +246,16 @@ function guardarDatos() {
     span.innerHTML = document.getElementById("nombre").value;
 }
 guardarDatos();
+
+
+//!Encadenando animaciones
+const logo = document.querySelector('.imgLogo');
+console.log(logo);
+
+$('.imgLogo').slideUp(2000)
+    .delay(2000)
+    .slideDown(2000)
+    .delay(2000)
+    .slideUp(1000)
+    .delay(2000)
+    .slideDown(2000);
