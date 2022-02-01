@@ -248,14 +248,4 @@ function guardarDatos() {
 guardarDatos();
 
 
-//!Encadenando animaciones
-const logo = document.querySelector('.imgLogo');
-console.log(logo);
 
-$('.imgLogo').slideUp(2000)
-    .delay(2000)
-    .slideDown(2000)
-    .delay(2000)
-    .slideUp(1000)
-    .delay(2000)
-    .slideDown(2000);
