@@ -1,10 +1,8 @@
 const tarjeta = document.querySelector('#tarjeta'),
     btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
     formulario = document.querySelector('#formulario-tarjeta'),
-   
     numeroTarjeta = document.querySelector('#tarjeta .numero'),
     nombreTarjeta = document.querySelector('#tarjeta .nombre'),
-    logoMarca = document.querySelector('#logo-marca'),
     mesExpiracion = document.querySelector('#tarjeta .mes'),
     yearExpiracion = document.querySelector('#tarjeta .year');
 ccv = document.querySelector('#tarjeta .ccv');
@@ -48,7 +46,6 @@ for (let i = yearActual; i <= yearActual + 8; i++) {
 //! Input numero de tarjeta
 formulario.inputNumero.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
-
     formulario.inputNumero.value = valorInput
         // Elimino espacios en blanco
         .replace(/\s/g, '')
@@ -62,18 +59,29 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
     if (valorInput == '') {
         numeroTarjeta.textContent = '';
 
-        logoMarca.innerHTML = '';
-    }
-
-    
+    }    
     mostrarFrente();
 });
+
 
 //!Input nombre de tarjeta
 formulario.inputNombre.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
 
     formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+    nombreTarjeta.textContent = valorInput;
+
+
+    if (valorInput == '') {
+        nombreTarjeta.textContent = '';
+    }
+
+});
+//!Input nombre y apellido 
+formulario.nombreApellido.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+
+    formulario.nombreApellido.value = valorInput.replace(/[0-30]/g, '');
     nombreTarjeta.textContent = valorInput;
 
 

@@ -18,8 +18,8 @@ $.get(URLproductos, function (arrayObjeto) {
 
 
 //!Renderizo los producto que tengo en el array
-//productos: parametro de entrada de un arreglo de productos
-//etiqueta: contenedor en el html
+//!productos: parametro de entrada de un arreglo de productos
+//!etiqueta: contenedor en el html
 function renderizarProductos(productos, etiqueta) {
     etiqueta.innerHTML = "";
     for (producto of productos) {
@@ -212,3 +212,21 @@ function btnQuitar(id) {
     guardarStorage(arrayFinal);
     renderizarCarrito(arrayFinal, contenedorCarrito);
 }
+//!Simulacion de registro de usario
+class User {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+}
+
+usuario = new User(nombreCapturado);
+
+function guardarDatos() {
+    ArrayDatos = [];
+    ArrayDatos.push(usuario);
+    const dataName = document.getElementById("dataName")
+    let span = document.createElement('span');
+    dataName.appendChild(span);
+    span.innerHTML = document.getElementById("nombre").value;
+}
+guardarDatos();
