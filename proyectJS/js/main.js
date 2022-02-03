@@ -1,6 +1,5 @@
 //!Llamo los elementos que voy a utilizar
 $(() => {
-
     renderizarCarrito(obtenerStorage(), contenedorCarrito);
     document.getElementById("boton").addEventListener("click", guardarDatos);
 })
@@ -10,18 +9,8 @@ const contenedorProductos = $('#containerProducts')[0],
     URLproductos = '../js/productos.json';
 let nombreCapturado = document.getElementById("nombre").value;
 
-//!Aca logro mostrar los producto en el array
-
+//!Llamo el JSON con el get para cargar mis productos
 let productos = "";
-class Producto {
-    constructor(id, imagen, categoria, modelo, precio) {
-        this.id = id;
-        this.imagen = imagen;
-        this.categoria = categoria;
-        this.modelo = modelo;
-        this.precio = precio;
-    }
-}
 $.get(URLproductos, function (arrayObjeto) {
     productos = arrayObjeto;
     renderizarProductos(arrayObjeto, contenedorProductos);
@@ -51,6 +40,7 @@ function renderizarProductos(productos, etiqueta) {
     btnAgregar();
     btnFavorito();
 }
+
 
 //!Renderizo el carrito y agrego las propiedades que le voy a pasar
 function renderizarCarrito(cart, container) {
@@ -120,6 +110,7 @@ function renderizarCarrito(cart, container) {
 `);
 }
 
+
 //!Renderizo la seccion de favorito
 function renderizarFavorito(favorite, containter) {
     for (const productos of favorite) {
@@ -132,6 +123,7 @@ function renderizarFavorito(favorite, containter) {
     }
 
 }
+
 
 //!funciones para guardar y obtener el storage
 function guardarStorage(array) {
@@ -213,57 +205,10 @@ function agregarFavoritos(id) {
     renderizarFavorito(arrayCarritoFav, contenedorFavorito)
 }
 
+
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
 function btnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     guardarStorage(arrayFinal);
     renderizarCarrito(arrayFinal, contenedorCarrito);
 }
-
-
-//!Filtros de categorias
-$("#filtroTodos").click((e) => {
-    e.preventDefault();
-    renderizarProductos(productos, contenedorProductos);
-});
-
-
-
-$("#filtroTraining").click((e) => {
-    e.preventDefault();
-    const filterTraining = productos.filter(e => e.categoria == "Entrenar");
-    renderizarProductos(filterTraining, contenedorProductos);
-});
-
-$("#filtroRunning").click((e) => {
-    e.preventDefault()
-    const filterRunning = productos.filter(e => e.categoria == "Correr");
-    renderizarProductos(filterRunning, contenedorProductos);
-});
-
-$("#filtroUrban").click((e) => {
-    e.preventDefault()
-    const filterUrban = productos.filter(e => e.categoria == "Urbano");
-    renderizarProductos(filterUrban, contenedorProductos);
-});
-
-//!Simulacion de registro de usario
-class User {
-    constructor(nombre) {
-        this.nombre = nombre;
-    }
-}
-
-usuario = new User(nombreCapturado);
-
-function guardarDatos() {
-    ArrayDatos = [];
-    ArrayDatos.push(usuario);
-    const dataName = document.getElementById("dataName")
-    let span = document.createElement('span');
-    dataName.appendChild(span);
-
-
-    span.innerHTML = document.getElementById("nombre").value;
-}
-guardarDatos();
