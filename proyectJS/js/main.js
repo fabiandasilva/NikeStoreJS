@@ -1,37 +1,56 @@
 //!Llamo los elementos que voy a utilizar
 $(() => {
-    renderizarProductos(productos, contenedorProductos);
+
     renderizarCarrito(obtenerStorage(), contenedorCarrito);
     document.getElementById("boton").addEventListener("click", guardarDatos);
 })
 const contenedorProductos = $('#containerProducts')[0],
     contenedorCarrito = $("#containerCart"),
-    contenedorFavorito = $("#containerFav");
+    contenedorFavorito = $("#containerFav"),
+    URLproductos = '../js/productos.json';
 let nombreCapturado = document.getElementById("nombre").value;
+
+//!Aca logro mostrar los producto en el array
+
+let productos = "";
+class Producto {
+    constructor(id, imagen, categoria, modelo, precio) {
+        this.id = id;
+        this.imagen = imagen;
+        this.categoria = categoria;
+        this.modelo = modelo;
+        this.precio = precio;
+    }
+}
+$.get(URLproductos, function (arrayObjeto) {
+    productos = arrayObjeto;
+    renderizarProductos(arrayObjeto, contenedorProductos);
+})
 
 
 //!Renderizo los producto que tengo en el array
+//productos: parametro de entrada de un arreglo de productos
+//etiqueta: contenedor en el html
 function renderizarProductos(productos, etiqueta) {
     etiqueta.innerHTML = "";
     for (producto of productos) {
         etiqueta.innerHTML += `        
-        <div class="col-md-6 col-lg-4 col-xl-3 p-2" id="card">
-        <div class="special-img position-relative overflow-hidden">
-            <img src="${producto.imagen}" class="w-100"></a>
-        </div>
-        <div class="text-center">
-            <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>
-            <span class="fw-bold d-block">${producto.precio}</span>
-            <button class="agregar btn btn-primary mt-3" id="btnAdd${producto.id}">Agregar</button>
-            <button class="favorito btn btn-primary mt-3" id="btnFav${producto.id}"><i class="fa fa-heart"></i></button>
-        </div>
-    </div>
-       `
+                    <div class="col-md-6 col-lg-4 col-xl-3 p-2" id="card">
+                    <div class="special-img position-relative overflow-hidden">
+                        <img src="${producto.imagen}" class="w-100"></a>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>
+                        <span class="fw-bold d-block">${producto.precio}</span>
+                        <button class="agregar btn btn-primary mt-3" id="btnAdd${producto.id}">Agregar</button>
+                        <button class="favorito btn btn-primary mt-3" id="btnFav${producto.id}"><i class="fa fa-heart"></i></button>
+                    </div>
+                </div>
+                   `
     };
     btnAgregar();
     btnFavorito();
 }
-
 
 //!Renderizo el carrito y agrego las propiedades que le voy a pasar
 function renderizarCarrito(cart, container) {
@@ -87,15 +106,17 @@ function renderizarCarrito(cart, container) {
     cart.map(e => totalUnidades += e.cantidad)
     container.append(`
     <div class="col-12">
-    <div class="shopping-cart-total d-flex align-items-center">
-    <br>
-    </div>
-    <h5 class="mb-0">Total ${totalCompra}</h5>    
-    <br>    
-    <h5 class="mb-0">Cantidad ${totalUnidades}</h5> 
-<button type="button" class="btn position-relative" data-bs-toggle="modal"
-data-bs-target="#finalizarCompra">Finalizar compra
-</button>
+        <div class="shopping-cart-total d-flex justify-content-between p-5">
+            <br>
+            <div>
+                <button type="button" class="btn position-relative" data-bs-toggle="modal"
+                    data-bs-target="#finalizarCompra">Finalizar compra
+                </button>
+            </div>
+            <div>
+                <button class="btn btn-warning">Total ${totalCompra}</button>
+            </div>
+        </div>
 `);
 }
 
@@ -203,9 +224,10 @@ function btnQuitar(id) {
 //!Filtros de categorias
 $("#filtroTodos").click((e) => {
     e.preventDefault();
-    const filterTodos = productos.filter(e => e.categoria);
-    renderizarProductos(filterTodos, contenedorProductos);
+    renderizarProductos(productos, contenedorProductos);
 });
+
+
 
 $("#filtroTraining").click((e) => {
     e.preventDefault();
@@ -224,7 +246,6 @@ $("#filtroUrban").click((e) => {
     const filterUrban = productos.filter(e => e.categoria == "Urbano");
     renderizarProductos(filterUrban, contenedorProductos);
 });
-
 
 //!Simulacion de registro de usario
 class User {
@@ -246,6 +267,3 @@ function guardarDatos() {
     span.innerHTML = document.getElementById("nombre").value;
 }
 guardarDatos();
-
-
-
