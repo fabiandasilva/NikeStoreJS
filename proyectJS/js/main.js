@@ -169,7 +169,6 @@ function btnFavorito() {
     };
 };
 
-
 //!Agrego el id al storage y renderizo el carrito
 //Cambiar nombre agregarProductos
 function agregarProductos(id) {
