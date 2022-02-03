@@ -1,10 +1,10 @@
-const tarjeta = document.querySelector('#tarjeta'),
-	btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
-	formulario = document.querySelector('#formulario-tarjeta'),
-	numeroTarjeta = document.querySelector('#tarjeta .numero'),
-	nombreTarjeta = document.querySelector('#tarjeta .nombre'),	
-	mesExpiracion = document.querySelector('#tarjeta .mes'),
-	yearExpiracion = document.querySelector('#tarjeta .year');
+const tarjeta = document.querySelector('#tarjeta');
+const btnAbrirFormulario = document.querySelector('#btn-abrir-formulario');
+const formulario = document.querySelector('#formulario-tarjeta');
+const numeroTarjeta = document.querySelector('#tarjeta .numero');
+const nombreTarjeta = document.querySelector('#tarjeta .nombre');
+const mesExpiracion = document.querySelector('#tarjeta .mes');
+const yearExpiracion = document.querySelector('#tarjeta .year');
 ccv = document.querySelector('#tarjeta .ccv');
 
 //!Volteamos la tarjeta para mostrar el frente.
@@ -61,7 +61,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 	if (valorInput == '') {
 		numeroTarjeta.textContent = '#### #### #### ####';
 
-	
+
 	}
 
 

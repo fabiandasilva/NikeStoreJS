@@ -3,15 +3,15 @@ $(() => {
     renderizarCarrito(obtenerStorage(), contenedorCarrito);
     document.getElementById("boton").addEventListener("click", guardarDatos);
 })
-const contenedorProductos = $('#containerProducts')[0],
-    contenedorCarrito = $("#containerCart"),
-    contenedorFavorito = $("#containerFav"),
-    URLproductos = '../js/productos.json';
+const contenedorProductos = $('#containerProducts')[0];
+const contenedorCarrito = $("#containerCart");
+const contenedorFavorito = $("#containerFav");
+const  URLproductos = 'js/productos.JSON';
 let nombreCapturado = document.getElementById("nombre").value;
 
 //!Llamo el JSON con el get para cargar mis productos
 let productos = "";
-$.get(URLproductos, function (arrayObjeto) {
+$.getJSON(URLproductos, function (arrayObjeto) {
     productos = arrayObjeto;
     renderizarProductos(arrayObjeto, contenedorProductos);
 })
