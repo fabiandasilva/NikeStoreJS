@@ -1,82 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
 
 :root {
-    --lg-font: 'Kaisei Tokumin', serif;
-    --sm-font: 'Poppins', sans-serif;
+	--lg-font: 'Kaisei Tokumin', serif;
+	--sm-font: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: var(--sm-font);
+	font-family: var(--sm-font);
 }
 
 .imgLogo {
-    width: 130px;
-    height: auto;
+	width: 130px;
+	height: auto;
 }
 
 /* navbar */
 .navbar {
-    -webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand span {
-    letter-spacing: 4px;
-    font-family: var(--lg-font);
+	letter-spacing: 4px;
+	font-family: var(--lg-font);
 }
 
 .nav-item {
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+	border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
 }
 
 /* button */
 
 
 .btn:not(.nav-btns button) {
-    background-color: #fff;
-    color: rgb(85, 85, 85);
-    padding: 10px 28px;
-    border-radius: 25px;
-    border: 1px solid rgb(85, 85, 85);
+	background-color: #fff;
+	color: rgb(85, 85, 85);
+	padding: 10px 28px;
+	border-radius: 25px;
+	border: 1px solid rgb(85, 85, 85);
 }
 
 .btn:not(.nav-btns button):hover {
-    background-color: #939dac !important;
-    color: #fff;
+	background-color: #939dac !important;
+	color: #fff;
 }
 
 /* header */
 #header {
-    background: url(../img/slide.webp) top/cover no-repeat;
+	background: url(../img/slide.webp) top/cover no-repeat;
 
 
 }
 
 .carousel-inner h1 {
-    font-size: 60px;
-    font-family: var(--lg-font);
+	font-size: 60px;
+	font-family: var(--lg-font);
 }
 
 .carousel-item .btn {
-    border-color: #fff !important;
+	border-color: #fff !important;
 }
 
 .active-filter-btn {
-    background-color: rgb(40, 108, 172);
-    color: #0d6efd !important;
+	background-color: rgb(40, 108, 172);
+	color: #0d6efd !important;
 }
 
 .filter-button-group .btn:hover {
-    color: white;
+	color: white;
 }
 
 .title {
-    font-size: 10px;
+	font-size: 10px;
 }
 
 .fa.fa-heart:hover {
 	color: red;
-  }
+}
+
 .contenedor {
 	width: 90%;
 	max-width: 1000px;
@@ -104,14 +105,14 @@ body {
 	transform: rotateY(180deg);
 }
 
-.tarjeta > div {
+.tarjeta>div {
 	padding: 30px;
 	border-radius: 15px;
 	min-height: 315px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	box-shadow: 0 10px 10px 0 rgba(90,116,148,0.3);
+	box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
 }
 
 /* ---------- Tarjeta Delantera ----------*/
@@ -241,7 +242,7 @@ body {
 	top: -25px;
 	z-index: 3;
 	border-radius: 100%;
-	box-shadow: -5px 4px 8px rgba(24,56,182,0.4);
+	box-shadow: -5px 4px 8px rgba(24, 56, 182, 0.4);
 	padding: 5px;
 	transition: all .2s ease;
 	border: none;
@@ -300,8 +301,8 @@ body {
 
 .formulario-tarjeta input:focus,
 .formulario-tarjeta select:focus {
-	outline: rgb(4,4,4);
-	box-shadow: 1px 7px 10px -5px rgba(90,116,148,0.3);
+	outline: rgb(4, 4, 4);
+	box-shadow: 1px 7px 10px -5px rgba(90, 116, 148, 0.3);
 }
 
 .formulario-tarjeta input {
@@ -350,7 +351,7 @@ body {
 	font-size: 22px;
 	color: #fff;
 	background: #2364d2;
-	box-shadow: 2px 2px 10px 0px rgba(0,85,212,0.4);
+	box-shadow: 2px 2px 10px 0px rgba(0, 85, 212, 0.4);
 	cursor: pointer;
 }
 
@@ -358,7 +359,44 @@ body {
 	background: #1850b1;
 }
 
-.imgFav{
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formulario__mensaje-exito-activo {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
+
+.imgFav {
 	width: 200px;
 	height: 200px;
+}
+
+
+
+.colorTotal {
+	font-weight: 800;
+	font-size: 20px;
+	color: red;
 }

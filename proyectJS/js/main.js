@@ -6,8 +6,9 @@ $(() => {
 const contenedorProductos = $('#containerProducts')[0];
 const contenedorCarrito = $("#containerCart");
 const contenedorFavorito = $("#containerFav");
-const  URLproductos = 'js/productos.JSON';
+const URLproductos = 'js/productos.JSON';
 let nombreCapturado = document.getElementById("nombre").value;
+
 
 //!Llamo el JSON con el get para cargar mis productos
 let productos = "";
@@ -104,7 +105,7 @@ function renderizarCarrito(cart, container) {
                 </button>
             </div>
             <div>
-                <button class="btn btn-warning">Total ${totalCompra}</button>
+                <span class="colorTotal">Total: $${totalCompra}</span>
             </div>
         </div>
 `);
@@ -116,58 +117,15 @@ function renderizarFavorito(favorite, containter) {
     for (const productos of favorite) {
         containter.append(`
             <div class="text-center">
-                <img src="${productos.imagen}" class="imgFav"></a>
-                <p class="text-capitalize mt-3 mb-1">${productos.modelo}</p>           
-            </div>
-        `)
+            <img src="${productos.imagen}" class="imgFav"></a>
+            <p class="text-capitalize mt-3 mb-1">${productos.modelo}</p>           
+            <span id="btnDelFav${productos.id}" class="quitar badge bg-danger">X</span>   
+                </div>            
+        `);
     }
 
 }
 
-
-//!funciones para guardar y obtener el storage
-function guardarStorage(array) {
-    localStorage.setItem("carrito", JSON.stringify(array));
-}
-
-function obtenerStorage() {
-    return JSON.parse(localStorage.getItem("carrito")) || [];
-}
-
-
-//!Capturo el boton agregar 
-function btnAgregar() {
-    const botones = document.querySelectorAll(".agregar");
-    for (const boton of botones) {
-        boton.addEventListener("click", (e) => {
-            agregarProductos((e.target.id).substring(6))
-            //!Alert de producto agregado
-            Swal.fire({
-                icon: 'success',
-                title: 'Producto Agregado',
-                timer: 800
-            })
-        });
-
-    };
-};
-
-
-//!Capturo el boton favorito 
-function btnFavorito() {
-    const btns = document.querySelectorAll(".favorito");
-    for (const btn of btns) {
-        btn.addEventListener("click", (e) => {
-            agregarFavoritos((e.target.id).substring(6))
-            //!Alert de producto agregado
-            Swal.fire({
-                title: 'Favorito',
-                timer: 800
-            })
-        });
-
-    };
-};
 
 //!Agrego el id al storage y renderizo el carrito
 //Cambiar nombre agregarProductos
@@ -205,12 +163,7 @@ function agregarFavoritos(id) {
 }
 
 
-//!Si el id existe y conincide lo saco del carrito y luego lo renderizo
-function btnQuitar(id) {
-    const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
-    guardarStorage(arrayFinal);
-    renderizarCarrito(arrayFinal, contenedorCarrito);
-}
+
 //!Simulacion de registro de usario
 class User {
     constructor(nombre) {
@@ -220,12 +173,4 @@ class User {
 
 usuario = new User(nombreCapturado);
 
-function guardarDatos() {
-    ArrayDatos = [];
-    ArrayDatos.push(usuario);
-    const dataName = document.getElementById("dataName")
-    let span = document.createElement('span');
-    dataName.appendChild(span);
-    span.innerHTML = document.getElementById("nombre").value;
-}
-guardarDatos();
+

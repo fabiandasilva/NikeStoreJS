@@ -194,7 +194,7 @@
                     </div>
 
                     <!-- Formulario -->
-                    <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+                    <form action="" id="formulario-tarjeta formulario" class="formulario-tarjeta formulario">
                         <div class="grupo">
                             <label for="inputNumero">Número Tarjeta</label>
                             <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
@@ -227,8 +227,51 @@
                                 <input type="text" id="inputCCV" maxlength="3">
                             </div>
                         </div>
+                        <!-- Grupo: Nombre -->
+                        <div class="formulario__grupo" id="grupo__nombre">
+                            <label for="nombre" class="formulario__label">Nombre</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="nombre" id="nombre">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede
+                                contener letras.</p>
+                        </div>
 
-                        <button type="submit" class="btn-enviar" data-bs-dismiss="modal" id="comprar">Comprar</button>
+
+                        <!-- Grupo: Correo Electronico -->
+                        <div class="formulario__grupo" id="grupo__correo">
+                            <label for="correo" class="formulario__label">Correo Electrónico</label>
+                            <div class="formulario__grupo-input">
+                                <input type="email" class="formulario__input" name="correo" id="correo">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos,
+                                guiones y guion bajo.</p>
+                        </div>
+
+                        <!-- Grupo: Teléfono -->
+                        <div class="formulario__grupo" id="grupo__telefono">
+                            <label for="telefono" class="formulario__label">Teléfono</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="telefono" id="telefono">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son
+                                14 dígitos.</p>
+                        </div>
+
+
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
+                                correctamente. </p>
+                        </div>
+
+                        <div class="formulario__grupo formulario__grupo-btn-enviar">
+                            <button type="submit" class="formulario__btn btn-enviar">Enviar</button>
+                            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado
+                                exitosamente!</p>
+                        </div>
                     </form>
 
                 </div>
@@ -422,6 +465,8 @@
 
     <!-- Js principal -->
     <script src="./js/main.js"></script>
+    <!-- Js funciones -->
+    <script src="./js/functions.js"></script>
 
     <!-- Js Filtros -->
     <script src="./js/filters.js"></script>
