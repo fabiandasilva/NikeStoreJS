@@ -3,6 +3,7 @@ function btnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     guardarStorage(arrayFinal);
     renderizarCarrito(arrayFinal, contenedorCarrito);
+    localStorage.clear(arrayFinal)
 }
 
 

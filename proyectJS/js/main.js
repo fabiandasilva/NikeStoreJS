@@ -82,6 +82,7 @@ function renderizarCarrito(cart, container) {
 
         $("#btnDel" + product.id).on("click", (e) => {
             btnQuitar(product.id);
+
         });
         $("#btnPlus" + product.id).on("click", (e) => {
             product.cantidad++
@@ -105,10 +106,12 @@ function renderizarCarrito(cart, container) {
                 </button>
             </div>
             <div>
+            <button id="vaciar">vaciar carrito</button>
                 <span class="colorTotal">Total: $${totalCompra}</span>
             </div>
         </div>
 `);
+
 }
 
 
@@ -171,6 +174,4 @@ class User {
     }
 }
 
-usuario = new User(nombreCapturado);
-
-
+usuario = new User(nombreCapturado); 
