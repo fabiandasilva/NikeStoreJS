@@ -74,11 +74,12 @@ function renderizarCarrito(cart, container) {
                 class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
               
                 <span id="btnMinus${product.id}" class="badge rounded-pill bg-secondary">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="badge rounded-pill bg-secondary">+</span>
-                <span id="btnDel${product.id}" class="quitar badge bg-danger">X</span>
+                <span  class="quitar badge bg-danger">X</span>
             </div>
         </div>
     </div>    
-</div>`);
+</div>
+<button id="btnDel${product.id}">vaciar carrito</button>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
             btnQuitar(product.id);
@@ -94,6 +95,7 @@ function renderizarCarrito(cart, container) {
             guardarStorage(cart)
             renderizarCarrito(cart, container)
         })
+        
     }
     cart.map(e => totalUnidades += e.cantidad)
     container.append(`
@@ -106,8 +108,7 @@ function renderizarCarrito(cart, container) {
                 </button>
             </div>
             <div>
-            <button id="vaciar">vaciar carrito</button>
-                <span class="colorTotal">Total: $${totalCompra}</span>
+            <span class="colorTotal">Total: $${totalCompra}</span>
             </div>
         </div>
 `);

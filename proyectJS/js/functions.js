@@ -1,12 +1,17 @@
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
 function btnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
+    $("#containerCart").html("");
+    localStorage.clear(arrayFinal)
+}/* 
+function btnVaciar(id) {
+    const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     guardarStorage(arrayFinal);
-    renderizarCarrito(arrayFinal, contenedorCarrito);
+     $("#containerCart").html(0);
     localStorage.clear(arrayFinal)
 }
 
-
+ */
 
 
 //!Capturo el boton agregar 
