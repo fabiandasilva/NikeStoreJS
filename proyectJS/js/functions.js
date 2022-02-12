@@ -1,17 +1,16 @@
-//!Si el id existe y conincide lo saco del carrito y luego lo renderizo
-function btnQuitar(id) {
+//!Vacio el carrito y localStorage
+function btnVaciar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     $("#containerCart").html("");
     localStorage.clear(arrayFinal)
-}/* 
-function btnVaciar(id) {
+}
+//!Si el id existe y conincide lo saco del carrito y luego lo renderizo
+function btnQuitar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     guardarStorage(arrayFinal);
-     $("#containerCart").html(0);
-    localStorage.clear(arrayFinal)
+    renderizarCarrito(arrayFinal, contenedorCarrito);
 }
 
- */
 
 
 //!Capturo el boton agregar 

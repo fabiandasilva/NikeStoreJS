@@ -74,17 +74,25 @@ function renderizarCarrito(cart, container) {
                 class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
               
                 <span id="btnMinus${product.id}" class="badge rounded-pill bg-secondary">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="badge rounded-pill bg-secondary">+</span>
-                <span  class="quitar badge bg-danger">X</span>
+               
+                <span  class="quitar badge bg-danger"></span>
+                <span class="btn btn-primary mt-3" id="btnDel${product.id}"><i class="fa fa-trash"></i></span>
             </div>
         </div>
     </div>    
 </div>
-<button id="btnDel${product.id}">vaciar carrito</button>`);
+
+
+<button class="btn btn-primary mt-3" id="btnVaciar${product.id}">Vaciar Carrito</i></button>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
             btnQuitar(product.id);
-
         });
+        $("#btnVaciar" + product.id).on("click", (e) => {
+            btnVaciar(product.id);
+        });
+
+
         $("#btnPlus" + product.id).on("click", (e) => {
             product.cantidad++
             guardarStorage(cart)
@@ -95,7 +103,7 @@ function renderizarCarrito(cart, container) {
             guardarStorage(cart)
             renderizarCarrito(cart, container)
         })
-        
+
     }
     cart.map(e => totalUnidades += e.cantidad)
     container.append(`
@@ -114,7 +122,6 @@ function renderizarCarrito(cart, container) {
 `);
 
 }
-
 
 //!Renderizo la seccion de favorito
 function renderizarFavorito(favorite, containter) {
@@ -175,4 +182,4 @@ class User {
     }
 }
 
-usuario = new User(nombreCapturado); 
+usuario = new User(nombreCapturado);
