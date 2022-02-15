@@ -105,7 +105,7 @@ function renderizarCarrito(cart, container) {
         })
 
     }
-    cart.map(e => totalUnidades += e.cantidad)
+    cart.map(e => totalUnidades)
     container.append(`
     <div class="col-12">
         <div class="shopping-cart-total d-flex justify-content-between p-5">
@@ -115,13 +115,29 @@ function renderizarCarrito(cart, container) {
                     data-bs-target="#finalizarCompra">Finalizar compra
                 </button>
             </div>
-            <div>
+            <div>        
             <span class="colorTotal">Total: $${totalCompra}</span>
             </div>
         </div>
 `);
-
+totalUnidadesIcono(obtenerStorage());
 }
+function obtenerStorage() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+}
+
+function totalUnidadesIcono(array) {
+    let totalUnidades = 0;
+    array.forEach(productos => totalUnidades += productos.cantidad);
+    $('.cart-quantity').html(totalUnidades);
+}
+
+totalUnidadesIcono(obtenerStorage());
+
+
+
+
+
 
 //!Renderizo la seccion de favorito
 function renderizarFavorito(favorite, containter) {
@@ -130,7 +146,7 @@ function renderizarFavorito(favorite, containter) {
             <div class="text-center">
             <img src="${productos.imagen}" class="imgFav"></a>
             <p class="text-capitalize mt-3 mb-1">${productos.modelo}</p>           
-            <span id="btnDelFav${productos.id}" class="quitar badge bg-danger">X</span>   
+            <span id="btnDel${productos.id}" class="quitar badge bg-danger">X</span>   
                 </div>            
         `);
     }

@@ -2,7 +2,7 @@
 function btnVaciar(id) {
     const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     $("#containerCart").html("");
-    localStorage.clear(arrayFinal)
+    localStorage.clear(arrayFinal);
 }
 //!Si el id existe y conincide lo saco del carrito y luego lo renderizo
 function btnQuitar(id) {
@@ -54,9 +54,7 @@ function guardarStorage(array) {
 }
 
 
-function obtenerStorage() {
-    return JSON.parse(localStorage.getItem("carrito")) || [];
-}
+
 
 function guardarDatos() {
     ArrayDatos = [];
