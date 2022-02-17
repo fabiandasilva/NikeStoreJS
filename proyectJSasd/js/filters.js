@@ -21,9 +21,3 @@ $("#filtroUrban").click((e) => {
     const filterUrban = productos.filter(e => e.categoria == "Urbano");
     renderizarProductos(filterUrban, contenedorProductos);
 });
-
-$("#btnFavorite").click((e) => {
-    e.preventDefault()
-    let favoritos = JSON.parse(localStorage.getItem("favoritos"));    
-    renderizarProductos(favoritos, contenedorProductos);
-});

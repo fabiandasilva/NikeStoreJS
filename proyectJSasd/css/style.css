@@ -381,7 +381,3 @@ body {
 .colorTotal:hover{
 	color: red;
 }
-
-.cursor{
-	cursor: pointer;
-}

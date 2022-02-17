@@ -28,8 +28,8 @@
                 <img src="./img/logo.png" alt="logo" class="imgLogo">
             </a>
             <div class="order-lg-2 nav-btns">
-                <button id="btnFavorite" type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
-                    aria-expanded="false" aria-controls="collapseWidthExample">
+                <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#containerFavModal" aria-expanded="false" aria-controls="collapseWidthExample">
                     <i class="fa fa-heart"></i>
                     <span
                         class="position-absolute top-0 start-100 translate-middle badge bg-primary cart-quantity-fav"></span>
@@ -71,7 +71,7 @@
             <div class="text-center carousel-item active">
                 <h2 class="text-capitalize text-white">NIKE AIR ZOOM PEGASUS 38</h2>
                 <h1 class="text-uppercase py-2 fw-bold text-white">Una nueva forma de correr</h1>
-            
+                <a href="#" class="btn mt-3 text-uppercase">Comprar ahora</a>
             </div>
             <div class="text-center carousel-item">
                 <h2 class="text-capitalize text-white">Nike Air Zoom Pegasus 38</h2>
@@ -180,13 +180,13 @@
 
                     <!-- Contenedor Boton Abrir Formulario -->
                     <div class="contenedor-btn">
-                        <button class="btn-abrir-formulario active" id="btn-abrir-formulario">
+                        <button class="btn-abrir-formulario" id="btn-abrir-formulario">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
 
                     <!-- Formulario -->
-                    <form action="" id="formulario-tarjeta" class="formulario-tarjeta formulario active">
+                    <form action="" id="formulario-tarjeta" class="formulario-tarjeta formulario">
                         <div class="grupo">
                             <label for="inputNumero">Número Tarjeta</label>
                             <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
@@ -220,10 +220,10 @@
                             </div>
                         </div>
                         <div class="grupo">
-                            <label for="inputCorreo">Correo</label>
+                            <label for="inputNombre">Correo</label>
                             <input type="text" id="inputCorreo" maxlength="49" autocomplete="off">
                         </div>
-                        <button id="btnComprar" type="button" class="btn-enviar">Pagar</button>
+                        <button type="submit" class="btn-enviar btnComprar">Pagar</button>
                     </form>
                 </div>
             </div>

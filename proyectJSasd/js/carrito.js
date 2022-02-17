@@ -13,7 +13,6 @@ let nombreCapturado = document.getElementById("nombre").value;
 let productos = "";
 $.getJSON(URLproductos, function (arrayObjeto) {
     productos = arrayObjeto;
-    localStorage.setItem("productos", JSON.stringify(productos));
     renderizarProductos(arrayObjeto, contenedorProductos);
 })
 
@@ -38,15 +37,9 @@ function renderizarProductos(productos, etiqueta) {
                         <img src="${producto.imagen}" class="w-100"></a>
                     </div>
                     <div class="text-center">
-                    <div class="rating mt-3">
-                        <span class="text-primary"><i class="fas fa-star"></i></span>
-                        <span class="text-primary"><i class="fas fa-star"></i></span>
-                        <span class="text-primary"><i class="fas fa-star"></i></span>
-                        <span class="text-primary"><i class="fas fa-star"></i></span>
-                    </div>
                         <p class="text-capitalize mt-3 mb-1">${producto.modelo}</p>
                         <span class="fw-bold d-block">${producto.precio}</span>
-                        <button class="agregar btn btn-primary mt-3" id="btnAdd${producto.id}">Agregar al carrito</button>
+                        <button class="agregar btn btn-primary mt-3" id="btnAdd${producto.id}">Agregar</button>
                         <button class="favorito btn btn-primary mt-3" id="btnFav${producto.id}"><i class="fa fa-heart"></i></button>
                     </div>
                 </div>
@@ -87,19 +80,24 @@ function renderizarCarrito(cart, container) {
             <div
                 class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
               
-                <span id="btnMinus${product.id}" class="badge rounded-pill bg-secondary cursor">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="badge rounded-pill bg-secondary cursor">+</span>
+                <span id="btnMinus${product.id}" class="badge rounded-pill bg-secondary">-</span>      ${product.cantidad}     <span id="btnPlus${product.id}" class="badge rounded-pill bg-secondary">+</span>
                
-                <span class="quitar badge bg-danger"></span>
+                <span  class="quitar badge bg-danger"></span>
                 <span class="btn btn-primary mt-3" id="btnDel${product.id}"><i class="fa fa-trash"></i></span>
             </div>
         </div>
     </div>    
-</div>`);
+</div>
+
+
+<button class="btn btn-primary mt-3" id="btnVaciar${product.id}">Vaciar Carrito</i></button>`);
 
         $("#btnDel" + product.id).on("click", (e) => {
             btnQuitar(product.id);
         });
-
+        $("#btnVaciar" + product.id).on("click", (e) => {
+            btnVaciar(product.id);
+        });
 
 
         $("#btnPlus" + product.id).on("click", (e) => {
@@ -108,24 +106,18 @@ function renderizarCarrito(cart, container) {
             renderizarCarrito(cart, container)
         })
         $("#btnMinus" + product.id).on("click", (e) => {
-            if (product.cantidad > 1) {
-                product.cantidad--
-            }
+            product.cantidad--
             guardarStorage(cart)
             renderizarCarrito(cart, container)
         })
 
-    } // end foreach prod
-
+    }
     cart.map(e => totalUnidades)
     container.append(`
     <div class="col-12">
         <div class="shopping-cart-total d-flex justify-content-between p-5">
             <br>
             <div>
-
-                <button type="button" class="btn position-relative" id="btnVaciar">Vaciar Carrito</button>
-
                 <button type="button" class="btn position-relative" data-bs-toggle="modal"
                     data-bs-target="#finalizarCompra">Finalizar compra
                 </button>
@@ -135,11 +127,6 @@ function renderizarCarrito(cart, container) {
             </div>
         </div>
 `);
-
-    $("#btnVaciar").on("click", (e) => {
-        btnVaciar();
-    });
-
     totalUnidadesIcono(obtenerStorage());
 }
 //Capturo el boton agregar 
@@ -187,13 +174,14 @@ function btnQuitar(id) {
 
 
 //Vacio el carrito y localStorage
-function btnVaciar() {
+function btnVaciar(id) {
+    const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
     $("#containerCart").html("");
-    localStorage.clear("carrito");
-    localStorage.clear("favorito");
-    totalUnidadesIcono(obtenerStorage());
+    localStorage.clear(arrayFinal);
 }
 
+
+//!Ver Esto: Renderizar cantidad automaticamente
 //Contador de unidades de producto
 function totalUnidadesIcono(array) {
     let totalUnidades = 0;
@@ -201,33 +189,18 @@ function totalUnidadesIcono(array) {
     $('.cart-quantity').html(totalUnidades);
 }
 
-
-//capturo el boton comprar y confirmo la compra 
+//!Ver Esto: Vaciar carrito al comfirmar
+//Confirmacion de compra realizada
 function comprarBtn() {
-    $("#btnComprar").on("click", (e) => {
-        btnComprar_Click();
-    });
-}
-comprarBtn();
-
-function btnComprar_Click() {
-    if (EstaFormularioCompleto() === true) {
-        limpiarFormulario();
-        btnVaciar();
-
-        Swal.fire({
-            title: 'Compra Realizada',
-            text: 'Te contactaremos en la brevedad',
-            timer: '1100'
-        })
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Completa tus datos',
-            timer: '900'
+    const comprarBtn = $(".btnComprar");
+    for (const btnn of comprarBtn) {
+        btnn.addEventListener("click", (e) => {
+            Swal.fire({
+                title: 'Compra Realizada',
+                text: 'Nos pondremos en contacto en la brevedad',
+                timer: 990
+            })
         })
     }
 }
-
-
-
+comprarBtn();

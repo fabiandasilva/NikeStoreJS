@@ -1,11 +1,13 @@
 const tarjeta = document.querySelector('#tarjeta');
 const btnAbrirFormulario = document.querySelector('#btn-abrir-formulario');
+/* Datos tarjeta */
 const formulario = document.querySelector('#formulario-tarjeta');
 const numeroTarjeta = document.querySelector('#tarjeta .numero');
 const nombreTarjeta = document.querySelector('#tarjeta .nombre');
 const mesExpiracion = document.querySelector('#tarjeta .mes');
 const yearExpiracion = document.querySelector('#tarjeta .year');
 ccv = document.querySelector('#tarjeta .ccv');
+/* Datos personales Usuario */
 const correo = document.querySelector('#inputCorreo');
 
 //!Volteamos la tarjeta para mostrar el frente.
@@ -110,43 +112,3 @@ formulario.inputCCV.addEventListener('keyup', () => {
 
 	ccv.textContent = formulario.inputCCV.value;
 });
-
-//Limpio los datos cargados del formulario 
-function limpiarFormulario() {
-	$("#inputNumero").val("");
-	$("#inputNombre").val("");
-	$("#inputCorreo").val("");
-	$("#selectYear").val("");
-	$("#selectMes").val("");
-	$("#inputCCV").val("");
-
-
-
-	$("#finalizarCompra").modal('toggle');
-}
-//Verifico si los datos del form estan completo
-function EstaFormularioCompleto() {
-	if ($("#inputNumero").val() === '') {
-		return false;
-	}
-	if ($("#inputNombre").val() === '') {
-		return false;
-	}
-	if ($("#inputCorreo").val() === '') {
-		return false;
-	}
-	if ($("#selectYear").val() === '') {
-		return false;
-	}
-	if ($("#selectMes").val() === '') {
-		return false;
-	}
-	if ($("#inputCCV").val() === '') {
-		return false;
-	}
-	if ($("#inputCCV").val() === '') {
-		return false;
-	}
-
-	return true;
-}
