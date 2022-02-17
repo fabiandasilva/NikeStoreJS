@@ -8,7 +8,7 @@ const mesExpiracion = document.querySelector('#tarjeta .mes');
 const yearExpiracion = document.querySelector('#tarjeta .year');
 ccv = document.querySelector('#tarjeta .ccv');
 /* Datos personales Usuario */
-
+const correo = document.querySelector('#inputCorreo');
 
 //!Volteamos la tarjeta para mostrar el frente.
 const mostrarFrente = () => {
@@ -77,12 +77,14 @@ formulario.inputNombre.addEventListener('keyup', (e) => {
 	formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
 	nombreTarjeta.textContent = valorInput;
 
-	if (valorInput == '') {
-		nombreTarjeta.textContent = 'Jhon Doe';
-	}
-
 	mostrarFrente();
 });
+//Correo
+formulario.inputCorreo.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+	formulario.inputCorreo.value = valorInput.replace(/[0-9]/g, '');
+	correo.textContent = valorInput;
+})
 
 //!Select mes
 formulario.selectMes.addEventListener('change', (e) => {

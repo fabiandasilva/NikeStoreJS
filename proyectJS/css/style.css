@@ -16,8 +16,8 @@ body {
 
 /* navbar */
 .navbar {
-	-webkit-box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
+	
+	box-shadow: 0 3px 9px 3px rgb(0, 0, 0);
 }
 
 .navbar-brand span {
@@ -57,27 +57,23 @@ body {
 	font-family: var(--lg-font);
 }
 
-.carousel-item .btn {
-	border-color: #fff !important;
-}
-
-.active-filter-btn {
-	background-color: rgb(40, 108, 172);
-	color: #0d6efd !important;
-}
-
-.filter-button-group .btn:hover {
-	color: white;
-}
 
 .title {
 	font-size: 10px;
 }
 
 .fa.fa-heart:hover {
-	color: red;
+	color: rgba(255, 0, 0, 0.426);
 }
-
+.fa.fa-shopping-cart:hover {
+	color: rgba(13, 117, 165, 0.426);
+}
+.color{
+	border-radius: 100%;
+	font-size: 12px;
+	background-color: rgb(0, 0, 0);
+	color:rgba(255, 255, 255, 0.974);
+}
 .contenedor {
 	width: 90%;
 	max-width: 1000px;

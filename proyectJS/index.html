@@ -28,23 +28,17 @@
                 <img src="./img/logo.png" alt="logo" class="imgLogo">
             </a>
             <div class="order-lg-2 nav-btns">
-
-                <button type="button" class="btn position-relative" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    <span> <i class="fa fa-user"> </i></span>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
-                </button>
-
                 <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
                     data-bs-target="#containerFavModal" aria-expanded="false" aria-controls="collapseWidthExample">
                     <i class="fa fa-heart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary"></span>
+                    <span
+                        class="position-absolute top-0 start-100 translate-middle badge bg-primary cart-quantity-fav"></span>
                 </button>
 
                 <button type="button" class="btn position-relative" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                    <i class="fa fa-shopping-cart "></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary cart-quantity"></span>
+                    <i class="fa fa-shopping-cart" href="#tienda"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge color cart-quantity"></span>
                 </button>
                 <span id="dataName"></span>
             </div>
@@ -225,7 +219,11 @@
                                 <input type="text" id="inputCCV" maxlength="3">
                             </div>
                         </div>
-                        <button type="submit" class="btn-enviar">Pagar</button>
+                        <div class="grupo">
+                            <label for="inputNombre">Correo</label>
+                            <input type="text" id="inputCorreo" maxlength="49" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn-enviar btnComprar">Pagar</button>
                     </form>
                 </div>
             </div>
@@ -237,7 +235,7 @@
             <div class="row g-0">
                 <div class="d-flex flex-wrap justify-content-center mt-5 filter-button-group">
 
-                    <span type="button" class="btn m-2 text-dark " data-filter="*" id="filtroTodos">Todos</span>
+                    <span type="button" class="btn m-2 text-dark " id="filtroTodos">Todos</span>
 
                     <span type="button" class="btn m-2 text-dark" id="filtroTraining">Training</span>
 
@@ -249,7 +247,7 @@
     </section>
 
 
-    <div class="container">
+    <div class="container" id="cart">
         <!-- Favoritos Oculto -->
         <div style="min-height: 50%;">
             <div class="collapse collapse-horizontal" id="containerFavModal">
@@ -415,11 +413,12 @@
 
     <!-- bootstrap js -->
     <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
-
+    
     <!-- Js principal -->
-    <script src="./js/main.js"></script>
-    <!-- Js funciones -->
-    <script src="./js/functions.js"></script>
+    <script src="./js/carrito.js"></script>
+    
+    <!-- JS Favorito -->
+    <script src="./js/favorito.js"> </script>
 
     <!-- Js Filtros -->
     <script src="./js/filters.js"></script>

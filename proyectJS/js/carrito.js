@@ -1,7 +1,6 @@
-//!Llamo los elementos que voy a utilizar
+//Llamo los elementos que voy a utilizar
 $(() => {
     renderizarCarrito(obtenerStorage(), contenedorCarrito);
-    document.getElementById("boton").addEventListener("click", guardarDatos);
 })
 const contenedorProductos = $('#containerProducts')[0];
 const contenedorCarrito = $("#containerCart");
@@ -10,7 +9,7 @@ const URLproductos = 'js/productos.JSON';
 let nombreCapturado = document.getElementById("nombre").value;
 
 
-//!Llamo el JSON con el get para cargar mis productos
+//Llamo el JSON con el get para cargar mis productos
 let productos = "";
 $.getJSON(URLproductos, function (arrayObjeto) {
     productos = arrayObjeto;
@@ -18,9 +17,17 @@ $.getJSON(URLproductos, function (arrayObjeto) {
 })
 
 
-//!Renderizo los producto que tengo en el array
-//!productos: parametro de entrada de un arreglo de productos
-//!etiqueta: contenedor en el html
+//funciones para guardar y obtener el storage del cart
+function guardarStorage(array) {
+    localStorage.setItem("carrito", JSON.stringify(array));
+}
+
+function obtenerStorage() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+}
+
+
+//Renderizo los producto que tengo en el array
 function renderizarProductos(productos, etiqueta) {
     etiqueta.innerHTML = "";
     for (producto of productos) {
@@ -43,7 +50,7 @@ function renderizarProductos(productos, etiqueta) {
 }
 
 
-//!Renderizo el carrito y agrego las propiedades que le voy a pasar
+//Renderizo el carrito y agrego las propiedades que le voy a pasar
 function renderizarCarrito(cart, container) {
     let totalCompra = 0;
     let totalUnidades = 0;
@@ -120,42 +127,27 @@ function renderizarCarrito(cart, container) {
             </div>
         </div>
 `);
-totalUnidadesIcono(obtenerStorage());
+    totalUnidadesIcono(obtenerStorage());
 }
-function obtenerStorage() {
-    return JSON.parse(localStorage.getItem("carrito")) || [];
-}
+//Capturo el boton agregar 
+function btnAgregar() {
+    const botones = document.querySelectorAll(".agregar");
+    for (const boton of botones) {
+        boton.addEventListener("click", (e) => {
+            agregarProductos((e.target.id).substring(6))
+            //Alert de producto agregado
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto Agregado',
+                timer: 800
+            })
+        });
 
-function totalUnidadesIcono(array) {
-    let totalUnidades = 0;
-    array.forEach(productos => totalUnidades += productos.cantidad);
-    $('.cart-quantity').html(totalUnidades);
-}
-
-totalUnidadesIcono(obtenerStorage());
-
-
-
-
-
-
-//!Renderizo la seccion de favorito
-function renderizarFavorito(favorite, containter) {
-    for (const productos of favorite) {
-        containter.append(`
-            <div class="text-center">
-            <img src="${productos.imagen}" class="imgFav"></a>
-            <p class="text-capitalize mt-3 mb-1">${productos.modelo}</p>           
-            <span id="btnDel${productos.id}" class="quitar badge bg-danger">X</span>   
-                </div>            
-        `);
-    }
-
-}
+    };
+};
 
 
-//!Agrego el id al storage y renderizo el carrito
-//Cambiar nombre agregarProductos
+//Agrego el id al storage y renderizo el carrito
 function agregarProductos(id) {
     const arrayCarrito = obtenerStorage();
     const prodSelec = productos.find(e => e.id === id);
@@ -173,29 +165,42 @@ function agregarProductos(id) {
     renderizarCarrito(arrayCarrito, contenedorCarrito) // muestro el array carrito   
 };
 
-function agregarFavoritos(id) {
-    const arrayCarritoFav = obtenerStorage();
-    const prodSelecFav = productos.find(e => e.id === id);
-    const prodCartFav = {
-        id: prodSelecFav.id,
-        imagen: prodSelecFav.imagen,
-        modelo: prodSelecFav.modelo,
-        precio: prodSelecFav.precio
-    };
-
-    let index = arrayCarritoFav.findIndex(e => e.id === id);
-    index == -1 ? arrayCarritoFav.push(prodCartFav) :
-        guardarStorage(arrayCarritoFav);
-    renderizarFavorito(arrayCarritoFav, contenedorFavorito)
+//Si el id existe y conincide lo saco del carrito y luego lo renderizo
+function btnQuitar(id) {
+    const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
+    guardarStorage(arrayFinal);
+    renderizarCarrito(arrayFinal, contenedorCarrito);
 }
 
 
+//Vacio el carrito y localStorage
+function btnVaciar(id) {
+    const arrayFinal = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id != id);
+    $("#containerCart").html("");
+    localStorage.clear(arrayFinal);
+}
 
-//!Simulacion de registro de usario
-class User {
-    constructor(nombre) {
-        this.nombre = nombre;
+
+//!Ver Esto: Renderizar cantidad automaticamente
+//Contador de unidades de producto
+function totalUnidadesIcono(array) {
+    let totalUnidades = 0;
+    array.forEach(productos => totalUnidades += productos.cantidad);
+    $('.cart-quantity').html(totalUnidades);
+}
+
+//!Ver Esto: Vaciar carrito al comfirmar
+//Confirmacion de compra realizada
+function comprarBtn() {
+    const comprarBtn = $(".btnComprar");
+    for (const btnn of comprarBtn) {
+        btnn.addEventListener("click", (e) => {
+            Swal.fire({
+                title: 'Compra Realizada',
+                text: 'Nos pondremos en contacto en la brevedad',
+                timer: 990
+            })
+        })
     }
 }
-
-usuario = new User(nombreCapturado);
+comprarBtn();
