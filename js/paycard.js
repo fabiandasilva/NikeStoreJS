@@ -128,25 +128,20 @@ function limpiarFormulario() {
 function EstaFormularioCompleto() {
 	if ($("#inputNumero").val() === '') {
 		return false;
-	}
-	if ($("#inputNombre").val() === '') {
+	} else if ($("#inputNombre").val() === '') {
 		return false;
-	}
-	if ($("#inputCorreo").val() === '') {
+	} else if ($("#inputCorreo").val() === '') {
 		return false;
-	}
-	if ($("#selectYear").val() === '') {
+	} else if ($("#selectYear").val() === '') {
 		return false;
-	}
-	if ($("#selectMes").val() === '') {
+	} else if ($("#selectMes").val() === '') {
 		return false;
-	}
-	if ($("#inputCCV").val() === '') {
+	} else if ($("#inputCCV").val() === '') {
 		return false;
-	}
-	if ($("#inputCCV").val() === '') {
+	} else if ($("#inputCCV").val() === '') {
 		return false;
-	}
+	} else {
 
-	return true;
+		return true;
+	}
 }
